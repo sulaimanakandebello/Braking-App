@@ -1,0 +1,2507 @@
+classdef Brakee < matlab.apps.AppBase
+
+% Properties that correspond to app components
+properties (Access = public)
+BrakeeAppUIFigure matlab.ui.Figure
+TabGroup matlab.ui.container.TabGroup
+STATICTab matlab.ui.container.Tab
+Image3 matlab.ui.control.Image
+CLEARButton matlab.ui.control.Button
+SIMULATEButton matlab.ui.control.Button
+LOADINPUTDATAButton matlab.ui.control.Button
+INPUTPanel matlab.ui.container.Panel
+TextArea_17 matlab.ui.control.TextArea
+TransmissionPanel matlab.ui.container.Panel
+KgLabel matlab.ui.control.Label
+PTACModelEditField matlab.ui.control.EditField
+PTACModelEditFieldLabel matlab.ui.control.Label
+PTACEditField matlab.ui.control.NumericEditField
+PTACEditFieldLabel matlab.ui.control.Label
+VitesseKmhEditField matlab.ui.control.NumericEditField
+VitesseKmhEditFieldLabel matlab.ui.control.Label
+CardanBrakeDropDown matlab.ui.control.DropDown
+CardanBrakeDropDownLabel matlab.ui.control.Label
+VitesseMaxDropDown matlab.ui.control.DropDown
+VitesseMaxDropDownLabel matlab.ui.control.Label
+TransmissionDropDown matlab.ui.control.DropDown
+TransmissionDropDownLabel matlab.ui.control.Label
+EmetteurPanel matlab.ui.container.Panel
+TypeDropDown matlab.ui.control.DropDown
+AlimentationDropDown matlab.ui.control.DropDown
+AlimentationDropDownLabel matlab.ui.control.Label
+Ressort_EMDropDown matlab.ui.control.DropDown
+Ressort_EMDropDownLabel matlab.ui.control.Label
+FournisseurDropDown matlab.ui.control.DropDown
+FournisseurDropDownLabel matlab.ui.control.Label
+RatioDropDown matlab.ui.control.DropDown
+RatioDropDownLabel matlab.ui.control.Label
+MCDiaValveRefDropDown matlab.ui.control.DropDown
+MCDiaValveRefDropDownLabel matlab.ui.control.Label
+TypeDropDownLabel matlab.ui.control.Label
+TracteurPanel matlab.ui.container.Panel
+ChargementDropDown matlab.ui.control.DropDown
+ChargementDropDownLabel matlab.ui.control.Label
+ProjectDropDown matlab.ui.control.DropDown
+ProjectDropDownLabel matlab.ui.control.Label
+daNLabel matlab.ui.control.Label
+PedalForceEditField matlab.ui.control.NumericEditField
+PedalForceEditFieldLabel matlab.ui.control.Label
+PedalPanel matlab.ui.container.Panel
+TestEditField matlab.ui.control.NumericEditField
+TestEditFieldLabel matlab.ui.control.Label
+RessortDropDown matlab.ui.control.DropDown
+RessortDropDownLabel matlab.ui.control.Label
+PedalUnitDropDown matlab.ui.control.DropDown
+PedalUnitDropDownLabel matlab.ui.control.Label
+MarqueDropDown matlab.ui.control.DropDown
+MarqueDropDownLabel matlab.ui.control.Label
+RESULTSPanel matlab.ui.container.Panel
+UNLADENLabel_2 matlab.ui.control.Label
+LADENLabel_2 matlab.ui.control.Label
+EmergencyMainBrakeResultsPanel matlab.ui.container.Panel
+kgLabel matlab.ui.control.Label
+kgLabel_2 matlab.ui.control.Label
+MassTextArea_2 matlab.ui.control.TextArea
+MassTextArea matlab.ui.control.TextArea
+MassLabel matlab.ui.control.Label
+TextArea_12 matlab.ui.control.TextArea
+TargetresultforminTextArea matlab.ui.control.TextArea
+TargetresultforminTextAreaLabel matlab.ui.control.Label
+TextArea_11 matlab.ui.control.TextArea
+MRresultforMinTextArea matlab.ui.control.TextArea
+MRresultforMinTextAreaLabel matlab.ui.control.Label
+TextArea_10 matlab.ui.control.TextArea
+AdherenceGlissementTextArea_2 matlab.ui.control.TextArea
+AdherenceGlissementTextArea_2Label matlab.ui.control.Label
+TextArea_9 matlab.ui.control.TextArea
+AdherenceGlissementTextArea matlab.ui.control.TextArea
+AdherenceGlissementTextAreaLabel matlab.ui.control.Label
+mLabel_8 matlab.ui.control.Label
+TextArea_8 matlab.ui.control.TextArea
+mLabel_7 matlab.ui.control.Label
+BrakingDistanceminTextArea matlab.ui.control.TextArea
+BrakingDistanceminTextAreaLabel matlab.ui.control.Label
+DeccMaxPmaxLabel matlab.ui.control.Label
+msLabel_8 matlab.ui.control.Label
+TextArea_7 matlab.ui.control.TextArea
+msLabel_7 matlab.ui.control.Label
+DeccMinRegReqTextArea_3 matlab.ui.control.TextArea
+mLabel_6 matlab.ui.control.Label
+TextArea_6 matlab.ui.control.TextArea
+mLabel_5 matlab.ui.control.Label
+BrakingDistancemaxTextArea matlab.ui.control.TextArea
+BrakingDistancemaxTextAreaLabel matlab.ui.control.Label
+msLabel_6 matlab.ui.control.Label
+msLabel_5 matlab.ui.control.Label
+TextArea_5 matlab.ui.control.TextArea
+DeccMinPmaxTextArea matlab.ui.control.TextArea
+DeccMinPmaxTextAreaLabel matlab.ui.control.Label
+UNLADENLabel matlab.ui.control.Label
+LADENLabel matlab.ui.control.Label
+EmergencyMainBrakeRequirementPanel matlab.ui.container.Panel
+DeccMinRegReqTextArea_2 matlab.ui.control.TextArea
+MinRequirementforUnbraketrailerof3500kgLabel matlab.ui.control.Label
+MinRequirementforMotherRegulationLabel matlab.ui.control.Label
+mLabel_4 matlab.ui.control.Label
+TextArea_4 matlab.ui.control.TextArea
+mLabel_3 matlab.ui.control.Label
+DistanceTextArea_2 matlab.ui.control.TextArea
+DistanceTextArea_2Label matlab.ui.control.Label
+DeccMinRegReqLabel matlab.ui.control.Label
+msLabel_4 matlab.ui.control.Label
+TextArea_3 matlab.ui.control.TextArea
+msLabel_3 matlab.ui.control.Label
+mLabel_2 matlab.ui.control.Label
+TextArea_2 matlab.ui.control.TextArea
+mLabel matlab.ui.control.Label
+DistanceTextArea matlab.ui.control.TextArea
+DistanceTextAreaLabel matlab.ui.control.Label
+msLabel_2 matlab.ui.control.Label
+msLabel matlab.ui.control.Label
+TextArea matlab.ui.control.TextArea
+DeccMinRegReqTextArea matlab.ui.control.TextArea
+DeccMinRegReqTextAreaLabel matlab.ui.control.Label
+DYNAMICTab matlab.ui.container.Tab
+Image3_2 matlab.ui.control.Image
+EXPORTTOEXCELButton matlab.ui.control.Button
+UNLADENPanel matlab.ui.container.Panel
+blueMinimumredMaximumLabel_2 matlab.ui.control.Label
+TextArea_16 matlab.ui.control.TextArea
+UNLADENMASSKGTextAreaLabel matlab.ui.control.Label
+UIAxes_12 matlab.ui.control.UIAxes
+UIAxes_14 matlab.ui.control.UIAxes
+UIAxes_13 matlab.ui.control.UIAxes
+UIAxes_11 matlab.ui.control.UIAxes
+UIAxes_10 matlab.ui.control.UIAxes
+CLEARPLOTSButton matlab.ui.control.Button
+PLOTRESULTSButton matlab.ui.control.Button
+LADENPanel matlab.ui.container.Panel
+blueMinimumredMaximumLabel matlab.ui.control.Label
+TextArea_15 matlab.ui.control.TextArea
+LADENMASSKGTextAreaLabel matlab.ui.control.Label
+UIAxes_5 matlab.ui.control.UIAxes
+UIAxes_7 matlab.ui.control.UIAxes
+UIAxes_6 matlab.ui.control.UIAxes
+UIAxes_4 matlab.ui.control.UIAxes
+UIAxes_3 matlab.ui.control.UIAxes
+UIAxes_15 matlab.ui.control.UIAxes
+UIAxes matlab.ui.control.UIAxes
+UIAxes_2 matlab.ui.control.UIAxes
+UserGuide_StaTab matlab.ui.container.Tab
+Image4 matlab.ui.control.Image
+UserGuide_DynTab matlab.ui.container.Tab
+Image matlab.ui.control.Image
+end
+
+
+
+
+
+
+
+
+properties (Access = public)
+pedale_Data; % Table data for Pedale
+frontBrakeData; % Table data for frontbrake
+maitre_cylData; % Table data for Master Cylinder
+boosterData; % Table data for booster
+valve_hpData; % Table data for Valve HP
+tracteurData; % Table data for Tracteur
+transmissionData; % Table data for Transmission
+MRData; % table data for Mother regulation
+Pedal_Force; % table data for Pedal force _ dynamic modelling 
+maxTime;
+Fp; % Pedal Force
+Marque; % Pedal Brand
+unit; % Pedal unit 
+Ressort; % Pedal Springs 
+Pedal_Ratio; % Pedal Ratio
+
+
+Type; % Emetteur Type
+D_MC; % MC diameter or Valve ref
+Ratio; 
+Fournisseur;
+Alimentation;
+Ressort_EM;
+
+Trans;
+vitMod;
+cardan;
+vitesse;
+PTACMod;
+PTAC;
+
+Projet;
+Chargement;
+
+tester;
+
+x;
+Fp_y;
+Pe_y;
+minBrkF;
+maxBrkF;
+vehSpdMin_y;
+vehSpdMax_y;
+acceMin_y;
+acceMax_y;
+distMin_y;
+distMax_y;
+tractMin_y;
+tractMax_y;
+mr_y;
+targ_y;
+LadenMass;
+LadenMass_S;
+
+Fp_y1;
+Pe_y1;
+vehSpdMin_y1;
+vehSpdMax_y1;
+acceMin_y1;
+acceMax_y1;
+distMin_y1;
+distMax_y1;
+tractMin_y1;
+tractMax_y1;
+mr_y1;
+targ_y1;
+UnladenMass;
+UnladenMass_S;
+
+CompList;
+errMsg;
+errLabel;
+end
+
+% Callbacks that handle component events
+methods (Access = private)
+
+% Code that executes after component creation
+function startupFcn(app)
+% Code that executes after component creation
+app.CompList = readcell('Database.xlsx', 'Sheet', 'List'); % Loading all component list
+% app.CompList = CompList;
+projectDD = app.CompList(2:end, 1); %cellstr(app.CompList(2:end, 1));
+app.ProjectDropDown.Items = string(projectDD); %string(projectDD); %num2cell();
+app.ProjectDropDown.Value = projectDD(1); %num2cell(); 
+%Load data Chargement from Excel
+chargementDD = app.CompList(2:end, 3); %cellstr(app.CompList(29:31, 1));
+app.ChargementDropDown.Items = string(chargementDD); 
+app.ChargementDropDown.Value = chargementDD(1); 
+% Load data Marque from Excel
+marqueDD = app.CompList(2:end, 5); %cellstr(app.CompList(2:9, 3));
+app.MarqueDropDown.Items = string(marqueDD); 
+app.MarqueDropDown.Value = marqueDD(1); 
+% Load data Pedal Unit from Excel
+pedalunitDD = app.CompList(2:end, 7); %cellstr(app.CompList(2:21, 5));
+app.PedalUnitDropDown.Items = string(pedalunitDD); 
+app.PedalUnitDropDown.Value = pedalunitDD(1); 
+
+
+% Load data Ressort from Excel
+ressortDD = app.CompList(2:end, 9); %cellstr(app.CompList(27:29, 5));
+app.RessortDropDown.Items = string(ressortDD); 
+app.RessortDropDown.Value = ressortDD(1);
+
+
+% Load data Emetteur from Excel
+emetteurDD = app.CompList(2:end, 11); %cellstr(app.CompList(2:4, 7));
+app.TypeDropDown.Items = string(emetteurDD); 
+app.TypeDropDown.Value = emetteurDD(1);
+
+EMEChoices = string(app.CompList(3:end, 13)); 
+EMERatio = string(app.CompList(3:end, 14)); %cellstr(app.CompList(3:10, 11)); 
+EMEFour = string(app.CompList(3:end, 15));
+EMEAlim = string(app.CompList(3:end, 16));
+EMERessort = string(app.CompList(3:end, 17));
+
+app.MCDiaValveRefDropDown.Items = EMEChoices;
+app.MCDiaValveRefDropDown.Value = EMEChoices(1);
+
+app.MCDiaValveRefDropDown.Items = EMEChoices;
+app.MCDiaValveRefDropDown.Value = EMEChoices(1);
+
+app.RatioDropDown.Items = EMERatio;
+app.RatioDropDown.Value = EMERatio(1);
+
+app.FournisseurDropDown.Items = EMEFour;
+app.FournisseurDropDown.Value = EMEFour{1};
+
+app.AlimentationDropDown.Items = EMEAlim;
+app.AlimentationDropDown.Value = EMEAlim{1};
+
+app.Ressort_EMDropDown.Items = EMERessort;
+app.Ressort_EMDropDown.Value = EMERessort{1};
+
+% Load data Transmission from Excel
+transmissionDD = string(app.CompList(2:end, 31)); %cellstr(app.CompList(2:38, 19));
+app.TransmissionDropDown.Items = transmissionDD; 
+app.TransmissionDropDown.Value = transmissionDD(1);
+
+
+% Load data Vitesse from Excel
+vitesseDD = string(app.CompList(2:end, 33)); %cellstr(app.CompList(2:4, 21));
+app.VitesseMaxDropDown.Items = vitesseDD; 
+app.VitesseMaxDropDown.Value = vitesseDD(1);
+
+% Load data Cardan from Excel
+cardanDD = string(app.CompList(2:end, 35)); %cellstr(app.CompList(2:3, 23));
+app.CardanBrakeDropDown.Items = cardanDD; 
+app.CardanBrakeDropDown.Value = cardanDD(1);
+
+app.TextArea_17.Value = "SELECT COMPONENTS FOR SIMULATION";
+app.TextArea_17.BackgroundColor = ("0.30 0.75 0.93");
+
+% app.TextArea_17.BackgroundColor = ("0.90 0.90 0.90");
+
+end
+
+% Button pushed function: SIMULATEButton
+function SIMULATEButtonPushed(app, event)
+
+% RUN Pedale calculations 
+pedaleData = app.pedale_Data;
+Marque = app.Marque;
+unit = app.unit; 
+Ressort = app.Ressort; 
+Pedal_Force = app.Pedal_Force;
+
+maitre_cylData = app.maitre_cylData;
+boosterData = app.boosterData;
+valve_hpData = app.valve_hpData;
+transmissionData = app.transmissionData;
+frontBrakeData = app.frontBrakeData;
+tracteurData = app.tracteurData;
+MRData = app.MRData;
+
+Type = app.Type;
+D_MC = app.D_MC;
+Ratio = app.Ratio;
+Fournisseur = app.Fournisseur;
+Alimentation = app.Alimentation;
+Ressort_EM = app.Ressort_EM;
+
+Trans = app.Trans;
+vitMod = app.vitMod;
+
+Projet = app.Projet; 
+PTAC = app.PTAC;
+PTACMod = app.PTACMod; 
+Chargement = app.Chargement;
+errMsg = app.errMsg;
+errLabel = app.errLabel;
+app.TextArea_17.Value = "RUNNING SIMULATION";
+% Run Simulation and Display results for Static Model on App
+modelName = 'Braking_System_2021b.slx';
+load_system(modelName);
+simout = sim(modelName);
+assignin('base','simout',simout);
+
+% Writing results for minimum requirment for Mother Regulation
+% and unbrake trailer of 3500 kg
+app.DeccMinRegReqTextArea.Value = string(simout.MR_Min_Decc.signals.values(end,1));
+app.TextArea.Value = string(simout.MR_Min_Decc.signals.values(end,1));
+app.DistanceTextArea.Value = string(simout.MR_Min_Dist.signals.values(end,1));
+app.TextArea_2.Value = string(simout.MR_Min_Dist.signals.values(end,1));
+app.DeccMinRegReqTextArea_2.Value = string(simout.unbrakedM_Decc_Laden.signals.values(end,1));
+app.TextArea_3.Value = string(simout.unbrakedM_Decc_Unladen.signals.values(end,1));
+app.DistanceTextArea_2.Value = string(simout.MR_Min_Dist.signals.values(end,1));
+app.TextArea_4.Value = string(simout.MR_Min_Dist.signals.values(end,1));
+
+% Writing Emergency Main Brake results for Laden 
+app.DeccMinPmaxTextArea.Value = string(simout.Min_Decc_Laden.signals.values(end,1));
+app.BrakingDistancemaxTextArea.Value = string( simout.Max_BrkDist_Laden.signals.values(end,1));
+adhGli = simout.Min_Traction_Laden.signals.values(end,1);
+if adhGli == 1
+app.AdherenceGlissementTextArea.Value = "Adhérence";
+app.AdherenceGlissementTextArea.BackgroundColor = ("0.76 0.92 0.65");
+elseif adhGli == 0
+app.AdherenceGlissementTextArea.Value = "Glissement";
+app.AdherenceGlissementTextArea.BackgroundColor = ("0.92 0.65 0.65");
+end
+
+app.DeccMinRegReqTextArea_3.Value = string(simout.Max_Decc_Laden.signals.values(end,1));
+app.BrakingDistanceminTextArea.Value = string(simout.Min_BrkDist_Laden.signals.values(end,1));
+
+adhGli2 = simout.Max_Traction_Laden.signals.values(end,1);
+if adhGli2 == 1
+app.AdherenceGlissementTextArea_2.Value = "Adhérence";
+app.AdherenceGlissementTextArea_2.BackgroundColor = ("0.76 0.92 0.65");
+elseif adhGli2 == 0
+app.AdherenceGlissementTextArea_2.Value = "Glissement";
+app.AdherenceGlissementTextArea_2.BackgroundColor = ("0.92 0.65 0.65");
+end
+MRRes = simout.MR_Laden.signals.values(end,1);
+if MRRes == 1
+app.MRresultforMinTextArea.Value = "MR Respected";
+app.MRresultforMinTextArea.BackgroundColor = ("0.76 0.92 0.65");
+
+elseif MRRes == 0
+app.MRresultforMinTextArea.Value = "MR NOT Respected";
+app.MRresultforMinTextArea.BackgroundColor = ("0.92 0.65 0.65");
+end
+
+
+
+TarRes = simout.Target_Laden.signals.values(end,1);
+if TarRes == 1
+app.TargetresultforminTextArea.Value = "Target Respected";
+app.TargetresultforminTextArea.BackgroundColor = ("0.76 0.92 0.65");
+elseif TarRes == 0
+app.TargetresultforminTextArea.Value = "Target NOT Respected";
+app.TargetresultforminTextArea.BackgroundColor = ("0.92 0.65 0.65");
+end
+
+
+% Writing Emergency Main Brake results for Unladen 
+app.TextArea_5.Value = string(simout.Min_Decc_Unladen.signals.values(end,1));
+app.TextArea_6.Value = string(simout.Max_BrkDist_Unladen.signals.values(end,1));
+adhGli1 = simout.Min_Traction_Unladen.signals.values(end,1);
+if adhGli1 == 1
+app.TextArea_9.Value = "Adhérence";
+app.TextArea_9.BackgroundColor = ("0.76 0.92 0.65");
+elseif adhGli1 == 0
+app.TextArea_9.Value = "Glissement";
+app.TextArea_9.BackgroundColor = ("0.92 0.65 0.65");
+end
+
+app.TextArea_7.Value = string(simout.Max_Decc_Unladen.signals.values(end,1));
+app.TextArea_8.Value = string(simout.Min_BrkDist_Unladen.signals.values(end,1));
+adhGli3 = simout.Max_Traction_Unladen.signals.values(end,1);
+if adhGli3 == 1
+app.TextArea_10.Value = "Adhérence";
+app.TextArea_10.BackgroundColor = ("0.76 0.92 0.65");
+elseif adhGli3 == 0
+app.TextArea_10.Value = "Glissement";
+app.TextArea_10.BackgroundColor =("0.92 0.65 0.65");
+end
+
+MRRes1 = simout.MR_Unladen.signals.values(end,1);
+if MRRes1 == 1
+app.TextArea_11.Value = "MR Respected";
+app.TextArea_11.BackgroundColor = ("0.76 0.92 0.65");
+elseif MRRes1 == 0
+app.TextArea_11.Value = "MR NOT Respected";
+app.TextArea_11.BackgroundColor = ("0.92 0.65 0.65");
+end
+
+
+TarRes1 = simout.Target_Unladen.signals.values(end,1);
+if TarRes1 == 1
+app.TextArea_12.Value = "Target Respected";
+app.TextArea_12.BackgroundColor = ("0.76 0.92 0.65");
+elseif TarRes1 == 0
+app.TextArea_12.Value = "Target NOT Respected";
+app.TextArea_12.BackgroundColor =("0.92 0.65 0.65");
+end
+
+
+app.MassTextArea.Value = string(simout.LadenMass_S.signals.values(end,1));
+app.MassTextArea_2.Value = string(simout.UnladenMass_S.signals.values(end,1));
+app.TextArea_17.Value = 'SIMULATION COMPLETED'; %Greeen
+app.TextArea_17.BackgroundColor = ("0.38 0.83 0.06");
+
+end
+
+% Value changed function: TypeDropDown
+function TypeDropDownValueChanged(app, event)
+value = app.TypeDropDown.Value;
+if strcmp( app.TypeDropDown.Value, "Maître-Cylindre") 
+
+
+% EMEChoices = string(app.CompList(15:22, 9));
+% EMERatio = string(app.CompList(15:22, 11));
+% EMEFour = cellstr(app.CompList(15:22, 13));
+% EMEAlim = string(app.CompList(15:22, 15));
+% EMERessort = cellstr(app.CompList(15:22, 17));
+
+EMEChoices = string(app.CompList(3:end, 13)); 
+EMERatio = string(app.CompList(3:end, 14)); 
+EMEFour = string(app.CompList(3:end, 15));
+EMEAlim = string(app.CompList(3:end, 16));
+EMERessort = string(app.CompList(3:end, 17));
+
+elseif strcmp( app.TypeDropDown.Value, "Booster") 
+% EMEChoices = string(app.CompList(25:32, 9));
+% EMERatio = string(app.CompList(25:32, 11));
+% EMEFour = cellstr(app.CompList(25:32, 13));
+% EMEAlim = string(app.CompList(25:32, 15));
+% EMERessort = cellstr(app.CompList(25:32, 17));
+
+EMEChoices = string(app.CompList(3:end, 19)); 
+EMERatio = string(app.CompList(3:end, 20)); 
+EMEFour = string(app.CompList(3:end, 21));
+EMEAlim = string(app.CompList(3:end, 22));
+EMERessort = string(app.CompList(3:end, 23));
+
+elseif strcmp( app.TypeDropDown.Value, "Valve HP") 
+% EMEChoices = string(app.CompList(45:52, 9));
+% EMERatio = string(app.CompList(45:52, 11));
+% EMEFour = cellstr(app.CompList(45:52, 13));
+% EMEAlim = string(app.CompList(45:52, 15));
+% EMERessort = cellstr(app.CompList(45:52, 17));
+
+EMEChoices = string(app.CompList(3:end, 25)); 
+EMERatio = string(app.CompList(3:end, 26)); 
+EMEFour = string(app.CompList(3:end, 27));
+EMEAlim = string(app.CompList(3:end, 28));
+EMERessort = string(app.CompList(3:end, 29));
+
+end
+
+
+app.MCDiaValveRefDropDown.Items = EMEChoices;
+app.MCDiaValveRefDropDown.Value = EMEChoices(1);
+
+app.RatioDropDown.Items = EMERatio;
+app.RatioDropDown.Value = EMERatio(1);
+
+app.FournisseurDropDown.Items = EMEFour;
+app.FournisseurDropDown.Value = EMEFour{1};
+
+app.AlimentationDropDown.Items = EMEAlim;
+app.AlimentationDropDown.Value = EMEAlim{1};
+
+app.Ressort_EMDropDown.Items = EMERessort;
+app.Ressort_EMDropDown.Value = EMERessort{1};
+
+end
+
+
+
+% Value changed function: AdherenceGlissementTextArea_2
+function AdherenceGlissementTextArea_2ValueChanged(app, event)
+value = app.AdherenceGlissementTextArea_2.Value;
+
+if strcmp(value, 'Adhérence')
+app.AdherenceGlissementTextArea_2.BackgroundColor = [0.00, 1.00, 0.00];
+elseif strcmp(value, 'Glissement')
+app.AdherenceGlissementTextArea_2.BackgroundColor = [1.00, 0.00, 0.00]; % Reset the background color to white
+% app.TextArea_5.ForegroundColor = 'red'; % Set the text color to red
+else
+app.AdherenceGlissementTextArea_2.BackgroundColor = 'white'; % Reset the background color to white
+app.AdherenceGlissementTextArea_2.ForegroundColor = 'black'; % Reset the text color to black
+end
+
+% if strcmp(value2, 'Adhérence')
+% app.AdherenceGlissementTextArea_2.BackgroundColor = 'green';
+% elseif strcmp(value2, 'Glissement')
+% app.AdherenceGlissementTextArea_2.BackgroundColor = 'red'; % Reset the background color to white
+% % app.TextArea_5.ForegroundColor = 'red'; % Set the text color to red
+% else
+% app.AdherenceGlissementTextArea_2.BackgroundColor = 'white'; % Reset the background color to white
+% app.AdherenceGlissementTextArea_2.ForegroundColor = 'black'; % Reset the text color to black
+% end
+
+
+
+end
+
+% Button pushed function: LOADINPUTDATAButton
+function LOADINPUTDATAButtonPushed(app, event)
+
+% Loading Simulation input data 
+CLEARButtonPushed(app, event)
+
+app.Fp = app.PedalForceEditField.Value;
+app.Marque = app.MarqueDropDown.Value;
+app.unit = app.PedalUnitDropDown.Value;
+app.Ressort = app.RessortDropDown.Value;
+
+app.Type = app.TypeDropDown.Value;
+app.D_MC = app.MCDiaValveRefDropDown.Value;
+app.Ratio = app.RatioDropDown.Value;
+app.Fournisseur = app.FournisseurDropDown.Value;
+app.Alimentation = app.AlimentationDropDown.Value;
+app.Ressort_EM = app.Ressort_EMDropDown.Value;
+
+app.Trans = app.TransmissionDropDown.Value;
+app.vitMod = app.VitesseMaxDropDown.Value;
+app.cardan = app.CardanBrakeDropDown.Value;
+app.vitesse = app.VitesseKmhEditField.Value;
+app.PTACMod = app.PTACModelEditField.Value;
+app.PTAC = app.PTACEditField.Value;
+
+app.Projet = app.ProjectDropDown.Value;
+app.Chargement = app.ChargementDropDown.Value;
+
+app.tester = app.TextArea_9.Value;
+
+% Second step
+pedaleData = app.pedale_Data;
+Marque = app.Marque;
+unit = app.unit; 
+Ressort = app.Ressort; 
+Pedal_Force = app.Pedal_Force;
+
+maitre_cylData = app.maitre_cylData;
+boosterData = app.boosterData;
+valve_hpData = app.valve_hpData;
+transmissionData = app.transmissionData;
+frontBrakeData = app.frontBrakeData;
+tracteurData = app.tracteurData;
+MRData = app.MRData;
+
+Type = app.Type;
+D_MC = app.D_MC;
+Ratio = app.Ratio;
+Fournisseur = app.Fournisseur;
+Alimentation = app.Alimentation;
+Ressort_EM = app.Ressort_EM;
+
+Trans = app.Trans;
+vitMod = app.vitMod;
+
+Projet = app.Projet; 
+PTAC = app.PTAC;
+PTACMod = app.PTACMod; 
+Chargement = app.Chargement;
+errMsg = app.errMsg;
+errLabel = app.errLabel;
+
+
+% assigning values
+assignin("base", "Fp", app.Fp);
+assignin("base", "Marque", app.Marque);
+assignin("base", "unit", app.unit);
+assignin("base", "Ressort", app.Ressort);
+
+assignin("base", "Type", app.Type);
+assignin("base", "D_MC", app.D_MC);
+assignin("base", "Ratio", app.Ratio);
+assignin("base", "Fournisseur", app.Fournisseur);
+assignin("base", "Alimentation", app.Alimentation);
+assignin("base", "Ressort_EM", app.Ressort_EM);
+
+assignin("base", "Trans", app.Trans);
+assignin("base", "vitMod", app.vitMod);
+assignin("base", "cardan", app.cardan);
+assignin("base", "vitesse", app.vitesse);
+assignin("base", "PTACMod", app.PTACMod);
+assignin("base", "PTAC", app.PTAC);
+
+assignin("base", "Projet", app.Projet);
+assignin("base", "Chargement", app.Chargement);
+
+
+app.pedale_Data = table2cell(readtable('Database.xlsx', 'Sheet', 'pedale'));
+app.frontBrakeData = table2cell(readtable('Database.xlsx', 'Sheet', 'front_brake'));
+app.maitre_cylData = table2cell(readtable('Database.xlsx', 'Sheet', 'maitre_cyl'));
+app.boosterData = table2cell(readtable('Database.xlsx', 'Sheet', 'booster'));
+app.valve_hpData = table2cell(readtable('Database.xlsx', 'Sheet', 'valve_hp'));
+app.tracteurData = table2cell(readtable('Database.xlsx', 'Sheet', 'tracteur_'));
+app.transmissionData = table2cell(readtable('Database.xlsx', 'Sheet', 'transmission_'));
+app.MRData = table2cell(readtable('Database.xlsx', 'Sheet', "MR", 'Range', "A8:D8"));
+
+% Assign the data to a variable in the base workspace
+assignin('base', 'pedaleData', app.pedale_Data);
+assignin('base', 'frontBrakeData', app.frontBrakeData);
+assignin('base', 'maitre_cylData', app.maitre_cylData);
+assignin('base', 'boosterData', app.boosterData);
+assignin('base', 'valve_hpData', app.valve_hpData);
+assignin('base', 'tracteurData', app.tracteurData);
+assignin('base', 'transmissionData', app.transmissionData);
+assignin('base', 'MRData', app.MRData);
+
+
+
+
+TimeBase = 0.0005;
+lagtime = 0.54; %seconds : driver rxn + pedal activatn + brake engagement 
+%% Simu Input
+% Mother regulation 
+% MR.trgtTest = MRData (0);
+MR.trgtDecc = MRData {(1)};
+MR.trgtBrkDist = MRData{(2)};
+MR.trgtDecc_Unbrked = MRData{(3)};
+MR.trgtMass_Unbrked = MRData{(4)};
+%% PEDAL 
+npdl = size(pedaleData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= npdl
+i = i+1;
+if i <= npdl
+n = strcmp(pedaleData(i,1), Marque) && strcmp(pedaleData(i,2), unit) && strcmpi(pedaleData(i,3), Ressort);
+elseif i > npdl 
+app.TextArea_17.Value = 'PEDAL NOT FOUND!!! PLEASE CHECK INPUTS'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+
+end
+end
+pedale.calcData = pedaleData(i,:);
+pedale.ang_incid_rad = pedale.calcData{11} *pi/180;
+pedale.TEST = strcmp('TEST', Marque) && strcmp('TEST', unit) && strcmpi('TEST', Ressort);
+if strcmp(pedale.calcData{12}, 'Ratio') 
+pedale.method = 1;
+elseif strcmp(pedale.calcData{12}, 'Equation')
+pedale.method = 0;
+else
+app.TextArea_17.Value = 'PEDAL METHOD INVALID!! PLEASE CHECK INPUTS'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+
+end
+if strcmp('lineaire', pedale.calcData{5})
+pedale.Fr = pedale.calcData{10}*sin(pedale.ang_incid_rad)*pedale.calcData{6}/pedale.calcData{7};
+elseif strcmp('angulaire', pedale.calcData{5})
+pedale.Fr = pedale.calcData{10}/pedale.calcData{8}/10;
+else 
+pedale.Fr = 0;
+app.TextArea_17.Value = 'PLEASE SPECIFY "TYPE RESSORT" IN PEDAL DATA'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+pedale.Rp = pedale.calcData{7}/pedale.calcData{8};
+%% EMETTEUR
+%master cylinder parameters
+if strcmpi('Maître-cylindre', Type) 
+emetteur.Sel = 1;
+nmcyl = size(maitre_cylData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= nmcyl
+i = i+1;
+if i <= nmcyl
+n = strcmpi(maitre_cylData(i,1), Fournisseur) && strcmpi(maitre_cylData(i,2), Type)... 
+&& strcmpi(maitre_cylData(i,3), Ressort_EM) && maitre_cylData{i,5} == str2double(D_MC);
+elseif i > nmcyl
+app.TextArea_17.Value = 'MASTER CYLINDER NOT FOUND!!! PLEASE CHECK INPUTS'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+end
+maitre_cyl.calcData = maitre_cylData(i,:); % the data for the selected master cylinder for simulation. 
+% Booster parameters
+elseif strcmpi('Booster', Type)
+emetteur.Sel = 2;
+% boosterData = table2cell(readtable('Input.xlsx', 'Sheet', 'booster'));
+nval = size(boosterData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= nval
+i = i+1;
+if i <= nval
+n = strcmpi(boosterData(i,1), Fournisseur) && strcmpi(boosterData(i,2), Type)... 
+&& boosterData{i,3} == str2double(D_MC) && boosterData{i,4} == str2num(Ratio) ...
+&& boosterData{i,5} == str2num(Alimentation);
+elseif i > nval
+app.TextArea_17.Value = 'BOOSTER NOT FOUND!!! PLEASE CHECK INPUTS'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+end
+booster.calcData = boosterData(i,:); % the data for the selected booster for simulation. 
+if booster.calcData{7} == 0 && booster.calcData{10} == 0 % Calculating k1 
+booster.k1 = (-1*booster.calcData{12} + booster.calcData{9})/(booster.calcData{11} - booster.calcData{8}); 
+else 
+booster.k1 = 1000000;
+end
+if strcmp(booster.calcData{13},'N/A') % Calculating k2 
+booster.k2 = 1000000;
+else 
+booster.k2 = str2double(booster.calcData{13});
+end
+% Valve_hp parameters
+elseif strcmpi('Valve HP', Type) 
+emetteur.Sel = 3;
+% valve_hpData = table2cell(readtable('Input.xlsx', 'Sheet', 'valve_hp'));
+nval = size(valve_hpData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= nval
+i = i+1;
+if i <= nval
+n = strcmpi(valve_hpData(i,1), Fournisseur) && strcmpi(valve_hpData(i,2), Type)... 
+&& strcmp(valve_hpData{i,3}, D_MC);
+elseif i > nval
+app.TextArea_17.Value = 'VALVE_HP NOT FOUND!!! PLEASE CHECK INPUTS'; %red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+end
+valve_hp.calcData = valve_hpData(i,:); % the data for the selected Valve_hp for simulation. 
+valve_hp.k1 = valve_hp.calcData{10}; % getting k1 
+if valve_hp.calcData{14} == 0 % getting k2
+valve_hp.k2 = 1000000;
+else
+valve_hp.k2 = valve_hp.calcData{14}; 
+end
+else 
+
+app.TextArea_17.Value = 'PLEASE SELECT AN EMETTEUR'; %red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+%% TRANSMISSION
+ntrans = size(transmissionData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= ntrans
+i = i+1;
+if i <= ntrans
+n = strcmpi(transmissionData(i,1), Trans) && strcmpi(transmissionData(i,2), vitMod);
+elseif i > ntrans
+app.TextArea_17.Value = 'TRANSMISSION NOT FOUND!!! PLEASE CHECK INPUTS'; %red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+end
+transmission.calcData = transmissionData(i,:); % the data for the selected transmission for simulation. 
+transmission.Rra = transmission.calcData{4};
+transmission.Rbs = transmission.calcData{7};
+transmission.R4wd = transmission.calcData{8};
+transmission.Rfa = transmission.calcData{9};
+transmission.Redn_AV = transmission.Rbs *(1/transmission.R4wd)*transmission.Rfa;
+transmission.Redn_Tot = transmission.Rra + transmission.Redn_AV;
+transmission.Rend_AR = transmission.calcData{5};
+transmission.Rend_AV= transmission.calcData{6};
+%% FRONT BRAKE
+nfrbr = size(frontBrakeData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= ntrans % the old line
+i = i+1;
+if i <= nfrbr
+n = strcmpi(frontBrakeData(i,1), Trans) && strcmpi(frontBrakeData(i,2), vitMod);
+frontBrake.cfrbr = 1;
+elseif i > ntrans
+app.TextArea_17.Value = 'FRONTBRAKE NOT FOUND!!!';
+frontBrake.cfrbr = 0;
+end
+end
+if frontBrake.cfrbr == 1
+frontBrake.calcData = frontBrakeData(i,:); % the data for the front brake of the selected transmission.
+Pa_max_ax = frontBrake.calcData{6};
+Pa_max_b = frontBrake.calcData{7};
+Pa_min_ax = frontBrake.calcData{8};
+Pa_min_b = frontBrake.calcData{9};
+Tf_ax = frontBrake.calcData{10};
+Tf_b = frontBrake.calcData{11}; 
+else
+frontBrake.calcData = ones(1, size(frontBrakeData,2)); % the data for the front brake is set at zeros if not front brake is detected
+Pa_max_ax = 0;
+Pa_max_b = 0;
+Pa_min_ax = 0;
+Pa_min_b = 0;
+Tf_ax = 0;
+Tf_b = 0;
+end
+%% TRACTEUR
+ntract = size(tracteurData, 1);
+n = 0;
+i = 0;
+while n < 1 && i <= ntract
+i = i+1;
+if i <= ntract
+n = strcmpi(tracteurData(i,1), Projet) && strcmpi(tracteurData(i,2), PTACMod) && strcmpi(tracteurData(i,3), Chargement);
+elseif i > ntract
+app.TextArea_17.Value = 'TRACTEUR NOT FOUND!!! PLEASE CHECK INPUTS'; % red
+app.TextArea_17.BackgroundColor = ("1.00 0.28 0.28");
+end
+end
+tracteur.calcData = tracteurData(i,:); % the data for the selected transmission for simulation. 
+tracteur.chargeAR = tracteur.calcData{4};
+tracteur.empatt = tracteur.calcData{7};
+tracteur.chargeAV = 1 - tracteur.chargeAR;
+%tracteur.masseLaden = transmission.PTAC;
+tracteur.masseUnladenAV = tracteur.calcData{6};
+tracteur.masseUnladenAR = tracteur.calcData{5};
+tracteur.masseUnladen = tracteur.masseUnladenAV + tracteur.masseUnladenAR;
+tracteur.xA1 = tracteur.calcData{11};
+tracteur.xB2 = tracteur.calcData{12};
+tracteur.y1 = tracteur.calcData{13};
+tracteur.y2 = tracteur.calcData{14};
+tracteur.m1 = tracteur.calcData{15};
+tracteur.m2 = tracteur.calcData{16};
+tracteur.pente_deg = tracteur.calcData{8};
+tracteur.pente_rads = tracteur.pente_deg*pi/180;
+tracteur.minRayAV = tracteur.calcData{17};
+tracteur.maxRayAV = tracteur.calcData{18};
+tracteur.minRayAR = tracteur.calcData{19};
+tracteur.maxRayAR = tracteur.calcData{20};
+tracteur.RollRes = tracteur.calcData{21};
+tracteur.xA = sqrt(((-tracteur.masseUnladenAR*9.81*tracteur.empatt)/(tracteur.masseUnladen*9.81))^2);
+tracteur.xB = sqrt(((tracteur.masseUnladenAV*9.81*tracteur.empatt)/(tracteur.masseUnladen*9.81))^2);
+tracteur.y0 = (-tracteur.calcData{10}*9.81*cos(tracteur.pente_rads)*tracteur.empatt + tracteur.masseUnladen*9.81*...
+cos(tracteur.pente_rads)*tracteur.xB)/(tracteur.masseUnladen*9.81*sin(tracteur.pente_rads)); %How to calculate unladenmass with angle
+tracteur.PosG_X = (tracteur.m1*(tracteur.xA+tracteur.xA1) + tracteur.m2*(-tracteur.xB - tracteur.xB2))/(tracteur.m1+tracteur.m2+tracteur.masseUnladen);
+tracteur.PosG_Y = (tracteur.m1*(tracteur.y1 - tracteur.y0) + tracteur.m2*(tracteur.y2 - tracteur.y0))/(tracteur.m1+tracteur.m2+tracteur.masseUnladen);
+if strcmp(PTAC,"/")
+tracteur.x1 = tracteur.xA - tracteur.PosG_X;
+tracteur.x2 = tracteur.xB + tracteur.PosG_X;
+tracteur.masseLaden = tracteur.masseUnladen + tracteur.m1 + tracteur.m2;
+tracteur.masseLadenAR = tracteur.masseLaden*tracteur.x1/tracteur.empatt;
+tracteur.masseLadenAV = tracteur.masseLaden*tracteur.x2/tracteur.empatt;
+else 
+tracteur.masseLaden = PTAC;
+tracteur.masseLadenAR = tracteur.masseLaden*tracteur.chargeAR;
+tracteur.masseLadenAV = tracteur.masseLaden*tracteur.chargeAV;
+tracteur.x1 = sqrt((-tracteur.masseLadenAR*tracteur.empatt/tracteur.masseLaden)^2);
+tracteur.x2 = tracteur.masseLadenAV * tracteur.empatt/tracteur.masseLaden;
+end
+tracteur.h = tracteur.y0 + tracteur.PosG_Y;
+
+%%%%%%%
+assignin('base', 'TimeBase', TimeBase);
+assignin('base', 'lagtime', lagtime);
+
+
+app.Pedal_Ratio = app.TestEditField.Value; 
+assignin('base', 'pedale_Ratio_Test', app.Pedal_Ratio);
+
+
+assignin('base', 'pedale_calcData', pedale.calcData);
+assignin('base', 'pedale_ang_incid_rad', pedale.ang_incid_rad);
+assignin('base', 'pedale_TEST', pedale.TEST);
+assignin('base', 'pedale_method', pedale.method);
+assignin('base', 'pedale_Fr', pedale.Fr);
+assignin('base', 'pedale_Rp', pedale.Rp);
+if strcmpi (app.Type, 'Maître-Cylindre')
+assignin('base', 'maitre_cyl_calcData', maitre_cyl.calcData);
+
+elseif strcmpi (app.Type, 'Booster')
+assignin('base', 'booster_calcData', booster.calcData);
+assignin('base', 'booster_k1', booster.k1);
+assignin('base', 'booster_k2', booster.k2);
+
+elseif strcmpi (app.Type, 'Valve HP')
+assignin('base', 'valve_hp_calcData', valve_hp.calcData);
+assignin('base', 'valve_hp_k1', valve_hp.k1);
+assignin('base', 'valve_hp_k2', valve_hp.k2);
+end
+
+assignin('base', 'emetteur_Sel', emetteur.Sel);
+
+assignin('base', 'transmission_calcData', transmission.calcData);
+assignin('base', 'transmission_Rra', transmission.Rra);
+assignin('base', 'transmission_Rbs', transmission.Rbs);
+assignin('base', 'transmission_R4wd', transmission.R4wd);
+assignin('base', 'transmission_Rfa', transmission.Rfa);
+assignin('base', 'transmission_Redn_AV', transmission.Redn_AV);
+assignin('base', 'transmission_Redn_Tot', transmission.Redn_Tot);
+assignin('base', 'transmission_Rend_AR', transmission.Rend_AR);
+assignin('base', 'transmission_Rend_AV', transmission.Rend_AV);
+
+
+
+assignin('base', 'frontBrake_calcData', frontBrake.calcData);
+assignin('base', 'frontBrake_cfrbr', frontBrake.cfrbr);
+assignin('base', 'Pa_max_ax', Pa_max_ax);
+assignin('base', 'Pa_max_b', Pa_max_b);
+assignin('base', 'Pa_min_ax', Pa_min_ax);
+assignin('base', 'Pa_min_b', Pa_min_b);
+assignin('base', 'Tf_ax', Tf_ax);
+assignin('base', 'Tf_b', Tf_b);
+assignin('base', 'tracteur_calcData', tracteur.calcData);
+assignin('base', 'tracteur_chargeAR', tracteur.chargeAR);
+assignin('base', 'tracteur_empatt', tracteur.empatt);
+assignin('base', 'tracteur_chargeAV', tracteur.chargeAV);
+assignin('base', 'tracteur_masseUnladenAV', tracteur.masseUnladenAV);
+assignin('base', 'tracteur_masseUnladenAR', tracteur.masseUnladenAR);
+assignin('base', 'tracteur_masseUnladen', tracteur.masseUnladen);
+assignin('base', 'tracteur_xA1', tracteur.xA1);
+assignin('base', 'tracteur_xB2', tracteur.xB2);
+assignin('base', 'tracteur_y1', tracteur.y1);
+assignin('base', 'tracteur_y2', tracteur.y2);
+assignin('base', 'tracteur_m1', tracteur.m1);
+assignin('base', 'tracteur_m2', tracteur.m2);
+assignin('base', 'tracteur_pente_deg', tracteur.pente_deg);
+assignin('base', 'tracteur_pente_rads', tracteur.pente_rads);
+assignin('base', 'tracteur_minRayAV', tracteur.minRayAV);
+assignin('base', 'tracteur_maxRayAV', tracteur.maxRayAV);
+assignin('base', 'tracteur_minRayAR', tracteur.minRayAR);
+assignin('base', 'tracteur_maxRayAR', tracteur.maxRayAR);
+assignin('base', 'tracteur_RollRes', tracteur.RollRes);
+assignin('base', 'tracteur_xA', tracteur.xA);
+assignin('base', 'tracteur_xB', tracteur.xB);
+assignin('base', 'tracteur_y0', tracteur.y0);
+assignin('base', 'tracteur_PosG_X', tracteur.PosG_X);
+assignin('base', 'tracteur_PosG_Y', tracteur.PosG_Y);
+assignin('base', 'tracteur_masseLaden', tracteur.masseLaden);
+assignin('base', 'tracteur_masseLadenAR', tracteur.masseLadenAR);
+assignin('base', 'tracteur_masseLadenAV', tracteur.masseLadenAV);
+assignin('base', 'tracteur_x1', tracteur.x1);
+assignin('base', 'tracteur_x2', tracteur.x2);
+assignin('base', 'tracteur_h', tracteur.h);
+
+assignin('base', 'MR_trgtDecc', MR.trgtDecc);
+assignin('base', 'MR_trgtBrkDist', MR.trgtBrkDist);
+assignin('base', 'MR_trgtDecc_Unbrked', MR.trgtDecc_Unbrked);
+assignin('base', 'MR_trgtMass_Unbrked', MR.trgtMass_Unbrked);
+
+app.TextArea_17.Value = 'INPUT DATA LOADED - RUN SIMULATION'; %green
+app.TextArea_17.BackgroundColor = ("0.38 0.83 0.06");
+
+end
+
+% Callback function
+function EXPORTButtonPushed(app, event)
+% open("Braking_System.slx")
+modelName = 'Braking_System_2021b.slx';
+load_system(modelName);
+simout = sim(modelName);
+assignin('base','simout',simout);
+
+% Writing results for minimum requirment for Mother Regulation
+% and unbrake trailer of 3500 kg
+app.DeccMinRegReqTextArea.Value = simout.MR_Min_Decc.signals.values(end,1);
+app.TextArea.Value = simout.MR_Min_Decc.signals.values(end,1);
+app.DistanceTextArea.Value = simout.MR_Min_Dist.signals.values(end,1);
+app.TextArea_2.Value = simout.MR_Min_Dist.signals.values(end,1);
+app.DeccMinRegReqTextArea_2.Value = simout.unbrakedM_Decc_Laden.signals.values(end,1);
+app.TextArea_3.Value = simout.unbrakedM_Decc_Unladen.signals.values(end,1);
+app.DistanceTextArea_2.Value = simout.MR_Min_Dist.signals.values(end,1);
+app.TextArea_4.Value = simout.MR_Min_Dist.signals.values(end,1);
+
+% Writing Emergency Main Brake results for Laden 
+app.DeccMinPmaxTextArea.Value = simout.Min_Decc_Laden.signals.values(end,1);
+app.BrakingDistancemaxTextArea.Value = simout.Max_BrkDist_Laden.signals.values(end,1);
+app.AdherenceGlissementTextArea.Value = simout.Min_Traction_Laden.signals.values(end,1);
+app.DeccMinRegReqTextArea_3.Value = simout.Max_Decc_Laden.signals.values(end,1);
+app.BrakingDistanceminTextArea.Value = simout.Min_BrkDist_Laden.signals.values(end,1);
+app.AdherenceGlissementTextArea_2.Value = simout.Max_Traction_Laden.signals.values(end,1);
+app.MRresultforMinTextArea.Value = simout.MR_Laden.signals.values(end,1);
+app.TargetresultforminTextArea.Value = simout.Target_Laden.signals.values(end,1);
+% Writing Emergency Main Brake results for Unladen 
+app.TextArea_5.Value = simout.Min_Decc_Unladen.signals.values(end,1);
+app.TextArea_6.Value = simout.Max_BrkDist_Unladen.signals.values(end,1);
+app.TextArea_9.Value = simout.Min_Traction_Unladen.signals.values(end,1);
+app.TextArea_7.Value = simout.Max_Decc_Unladen.signals.values(end,1);
+app.TextArea_8.Value = simout.Min_BrkDist_Unladen.signals.values(end,1);
+app.TextArea_10.Value = simout.Max_Traction_Unladen.signals.values(end,1);
+app.TextArea_11.Value = simout.MR_Unladen.signals.values(end,1);
+app.TextArea_12.Value = simout.Target_Unladen.signals.values(end,1);
+
+
+
+
+end
+
+% Callback function
+function clear(app, event)
+end
+
+% Button pushed function: CLEARButton
+function CLEARButtonPushed(app, event)
+% Writing results for minimum requirment for Mother Regulation
+% and unbrake trailer of 3500 kg
+app.DeccMinRegReqTextArea.Value = '';
+app.TextArea.Value = '';
+app.DistanceTextArea.Value = '';
+app.TextArea_2.Value = '';
+app.DeccMinRegReqTextArea_2.Value = '';
+app.TextArea_3.Value = '';
+app.DistanceTextArea_2.Value = '';
+app.TextArea_4.Value = '';
+
+% Writing Emergency Main Brake results for Laden 
+app.DeccMinPmaxTextArea.Value = '';
+app.BrakingDistancemaxTextArea.Value = '';
+app.AdherenceGlissementTextArea.Value = '';
+app.DeccMinRegReqTextArea_3.Value = '';
+app.BrakingDistanceminTextArea.Value = '';
+app.AdherenceGlissementTextArea_2.Value = '';
+app.MRresultforMinTextArea.Value = '';
+app.TargetresultforminTextArea.Value = '';
+% Writing Emergency Main Brake results for Unladen 
+app.TextArea_5.Value = '';
+app.TextArea_6.Value = '';
+app.TextArea_9.Value = '';
+app.TextArea_7.Value = '';
+app.TextArea_8.Value = '';
+app.TextArea_10.Value = '';
+app.TextArea_11.Value = '';
+app.TextArea_12.Value = '';
+app.MassTextArea.Value = '';
+app.MassTextArea_2.Value = '';
+
+app.TextArea_17.Value = "SELECT COMPONENTS FOR SIMULATION";
+app.TextArea_17.BackgroundColor = ("0.30 0.75 0.93");
+
+app.AdherenceGlissementTextArea.BackgroundColor = ("1.00 1.00 1.00"); 
+app.AdherenceGlissementTextArea_2.BackgroundColor = ("1.00 1.00 1.00");
+app.MRresultforMinTextArea.BackgroundColor = ("1.00 1.00 1.00");
+app.TargetresultforminTextArea.BackgroundColor = ("1.00 1.00 1.00");
+app.TextArea_9.BackgroundColor = ("1.00 1.00 1.00");
+app.TextArea_10.BackgroundColor = ("1.00 1.00 1.00");
+app.TextArea_11.BackgroundColor = ("1.00 1.00 1.00");
+app.TextArea_12.BackgroundColor = ("1.00 1.00 1.00");
+
+end
+
+% Value changed function: TextArea_9
+function TextArea_9ValueChanged(app, event)
+value = app.TextArea_9.Value;
+if strcmpi (value, 'Adhérence')
+alert = 0;
+
+elseif strcmp(value, 'Glissement')
+alert = 1;
+
+else 
+alert = 2;
+
+end
+
+switch alert
+case 0 
+app.TextArea_9.BackgroundColor = [0.00, 1.00, 0.00];
+case 1
+app.TextArea_9.BackgroundColor = [0.95,0.42,0.16];
+case 2 
+app.TextArea_9.BackgroundColor = [1.00, 1.00, 1.00]; 
+end
+end
+
+% Callback function: TextArea_9
+function TextArea_9ValueChanging(app, event)
+changingValue = event.Value;
+
+if strcmp(changingValue, 'Adhérence')
+app.TextArea_9.BackgroundColor = [0.00, 1.00, 0.00];
+elseif strcmp(changingValue, 'Glissement')
+app.TextArea_9.BackgroundColor = [1.00, 0.00, 0.00]; % Reset the background color to white
+% app.TextArea_5.ForegroundColor = 'red'; % Set the text color to red
+else
+app.TextArea_9.BackgroundColor = 'white'; % Reset the background color to white
+app.TextArea_9.ForegroundColor = 'black'; % Reset the text color to black
+end
+end
+
+% Button pushed function: PLOTRESULTSButton
+function PLOTRESULTSButtonPushed(app, event)
+CLEARPLOTSButtonPushed(app)
+
+[file, path] = uigetfile('*.xlsx;*.xls', 'Select Excel File with Pedal Force');
+if isequal(file, 0) % Check if no file was selected
+return; % Exit the function
+end
+% Construct the file path
+filePath = fullfile(path, file);
+app.Pedal_Force = table2array(readtable(filePath));
+% app.Pedal_Force = readtable(filePath); %table2cell(readtable(filePath));%, 'Sheet', 'pedal_Force')));
+assignin('base', 'Pedal_Force', app.Pedal_Force);
+app.maxTime = max(app.Pedal_Force(:,1));
+assignin("base", "maxTime", app.maxTime);
+
+modelName = 'Braking_System_Dynamic_2021b.slx';
+load_system(modelName);
+simout1 = sim(modelName);
+assignin('base','simout1',simout1);
+
+% app.x.Value = simout1.Fp.time(end,1);
+% Laden results
+tt = simout1.TimeBase.signals.values;
+app.x = simout1.Time.signals.values; %1:1: 10449;
+app.Fp_y = simout1.Fp.signals.values;
+app.Pe_y = simout1.Pe_Bar.signals.values;
+app.minBrkF = simout1.minBrkF.signals.values;
+app.maxBrkF = simout1.maxBrkF.signals.values;
+app.vehSpdMin_y = simout1.Speed_min.signals.values;
+app.vehSpdMax_y = simout1.Speed_max.signals.values;
+app.acceMin_y = simout1.Acce_min.signals.values;
+app.acceMax_y = simout1.Acce_max.signals.values;
+app.distMin_y = simout1.Dist_min.signals.values;
+app.distMax_y = simout1.Dist_max.signals.values;
+app.tractMin_y = simout1.Traction_min.signals.values;
+app.tractMax_y = simout1.Traction_max.signals.values;
+app.mr_y = simout1.MR.signals.values;
+app.targ_y = simout1.Target.signals.values;
+app.LadenMass = string(simout1.LadenMass.signals.values(end,1));
+
+
+
+
+% Unladen results
+% app.Pe_y1 = simout1.Pe_Bar.signals.values;
+app.vehSpdMin_y1 = simout1.Speed_min1.signals.values;
+app.vehSpdMax_y1 = simout1.Speed_max1.signals.values;
+app.acceMin_y1 = simout1.Acce_min1.signals.values;
+app.acceMax_y1 = simout1.Acce_max1.signals.values;
+app.distMin_y1 = simout1.Dist_min1.signals.values;
+app.distMax_y1 = simout1.Dist_max1.signals.values;
+app.tractMin_y1 = simout1.Traction_min1.signals.values;
+app.tractMax_y1 = simout1.Traction_max1.signals.values;
+app.mr_y1 = simout1.MR1.signals.values;
+app.targ_y1 = simout1.Target1.signals.values;
+app.UnladenMass = string(simout1.UnladenMass.signals.values(end,1));
+
+
+% Plot of Pedal Force Fp
+grid (app.UIAxes,'on');
+plot(app.UIAxes, app.x, app.Fp_y);
+
+% Plot of Pressure Pe
+grid (app.UIAxes_2,'on');
+plot(app.UIAxes_2, app.x, app.Pe_y);
+
+% Plot of Braking Force 
+grid (app.UIAxes_15,'on');
+hold (app.UIAxes_15,'on');
+plot(app.UIAxes_15, app.x, app.minBrkF)
+plot(app.UIAxes_15, app.x, app.maxBrkF)
+
+% PLots of results for Laden 
+
+% Plot of Speeds
+grid (app.UIAxes_3,'on');
+hold (app.UIAxes_3,'on');
+plot(app.UIAxes_3, app.x, app.vehSpdMin_y)
+plot(app.UIAxes_3, app.x, app.vehSpdMax_y)
+
+% plot of Acceleration 
+grid (app.UIAxes_4,'on');
+hold (app.UIAxes_4,'on');
+plot(app.UIAxes_4, app.x, app.acceMin_y)
+plot(app.UIAxes_4, app.x, app.acceMax_y)
+
+
+% Plot of Distance 
+grid (app.UIAxes_5,'on');
+hold (app.UIAxes_5,'on');
+plot(app.UIAxes_5, app.x, app.distMin_y)
+plot(app.UIAxes_5, app.x, app.distMax_y)
+
+
+% Plot of Traction (Glissement/Adherence
+grid (app.UIAxes_6,'on');
+hold (app.UIAxes_6,'on');
+plot(app.UIAxes_6, app.x, app.tractMin_y)
+plot(app.UIAxes_6, app.x, app.tractMax_y)
+app.UIAxes_6.YLim = [-0.2,1.2];
+
+% Plot of Mother regulation and Target respected or not
+grid (app.UIAxes_7,'on');
+hold (app.UIAxes_7,'on');
+plot(app.UIAxes_7, app.x, app.mr_y)
+plot(app.UIAxes_7, app.x, app.targ_y)
+legend(app.UIAxes_7, 'MR', 'Target')
+app.UIAxes_7.YLim = [-0.2,1.2];
+
+app.TextArea_15.Value = app.LadenMass;
+
+% Plot of Speeds
+grid (app.UIAxes_10,'on');
+hold (app.UIAxes_10,'on');
+plot(app.UIAxes_10, app.x, app.vehSpdMin_y1)
+plot(app.UIAxes_10, app.x, app.vehSpdMax_y1)
+
+% plot of Acceleration 
+grid (app.UIAxes_11,'on');
+hold (app.UIAxes_11,'on');
+plot(app.UIAxes_11, app.x, app.acceMin_y1)
+plot(app.UIAxes_11, app.x, app.acceMax_y1)
+
+
+% Plot of Distance 
+grid (app.UIAxes_12,'on');
+hold (app.UIAxes_12,'on');
+plot(app.UIAxes_12, app.x, app.distMin_y1)
+plot(app.UIAxes_12, app.x, app.distMax_y1)
+
+
+% Plot of Traction (Glissement/Adherence
+grid (app.UIAxes_13,'on');
+hold (app.UIAxes_13,'on');
+plot(app.UIAxes_13, app.x, app.tractMin_y1)
+plot(app.UIAxes_13, app.x, app.tractMax_y1)
+app.UIAxes_13.YLim = [-0.2,1.2];
+
+% Plot of Mother regulation and Target respected or not
+grid (app.UIAxes_14,'on');
+hold (app.UIAxes_14,'on');
+plot(app.UIAxes_14, app.x, app.mr_y1)
+plot(app.UIAxes_14, app.x, app.targ_y1)
+legend(app.UIAxes_14, 'MR', 'Target')
+app.UIAxes_14.YLim = [-0.2,1.2];
+app.TextArea_16.Value = app.UnladenMass;
+
+end
+
+% Button pushed function: CLEARPLOTSButton
+function CLEARPLOTSButtonPushed(app, event)
+cla(app.UIAxes);
+cla(app.UIAxes_2);
+cla(app.UIAxes_3);
+cla(app.UIAxes_4);
+cla(app.UIAxes_5);
+cla(app.UIAxes_6);
+cla(app.UIAxes_7);
+
+cla(app.UIAxes_10);
+cla(app.UIAxes_11);
+cla(app.UIAxes_12);
+cla(app.UIAxes_13);
+cla(app.UIAxes_14);
+cla(app.UIAxes_15);
+
+app.TextArea_15.Value = '';
+app.TextArea_16.Value = '';
+end
+
+% Button pushed function: EXPORTTOEXCELButton
+function EXPORTTOEXCELButtonPushed(app, event)
+% Assuming 'dataTable' is the table you want to export
+expResultLaden = table(app.x, app.Fp_y, app.Pe_y, app.vehSpdMin_y, app.vehSpdMax_y, app.acceMin_y, app.acceMax_y, app.distMin_y, app.distMax_y, app.tractMin_y, app.tractMax_y, app.mr_y, app.targ_y, ...
+'VariableNames', {'Time(s)', 'Pedal Force(N)', 'Pressure (bar)', 'Speed_Min (km/h)', 'Speed_Max (km/h)','Acce_Min(m/s²)', 'Acce_Max(m/s²)', 'Dist_Min(m)', 'Dist_Max(m)', 'Tract_Min', 'Tract_Max', 'MR', 'Target'});
+
+expResultUnladen = table(app.x, app.Fp_y, app.Pe_y, app.vehSpdMin_y1, app.vehSpdMax_y1, app.acceMin_y1, app.acceMax_y1, app.distMin_y1, app.distMax_y1, app.tractMin_y1, app.tractMax_y1, app.mr_y1, app.targ_y1, ...
+'VariableNames', {'Time(s)', 'Pedal Force(N)', 'Pressure (bar)', 'Speed_Min (km/h)', 'Speed_Max (km/h)','Acce_Min(m/s²)', 'Acce_Max(m/s²)', 'Dist_Min(m)', 'Dist_Max(m)', 'Tract_Min', 'Tract_Max', 'MR', 'Target'});
+
+% Open a dialog to choose the export file location
+[filename, filepath] = uiputfile('*.xlsx', 'Save Excel File');
+if filename == 0 % User clicked 'Cancel'
+return;
+end
+% Create a full file path
+fullFilePath = fullfile(filepath, filename);
+% Write the table to Excel
+try
+writetable(expResultLaden, fullFilePath, 'Sheet', 'Laden', 'WriteRowNames', true);
+writetable(expResultUnladen, fullFilePath, 'Sheet', 'Unladen', 'WriteRowNames', true);
+msg = sprintf('Data exported to:\n%s', fullFilePath);
+msgbox(msg, 'Export Successful', 'modal');
+catch
+errordlg('Error exporting data to Excel', 'Export Error', 'modal');
+end
+end
+
+% Image clicked function: Image3
+function Image3Clicked(app, event)
+% Capture the app's figure
+screenshot = getframe(app.BrakeeAppUIFigure);
+
+% Open a dialog to choose the export file location
+[file_name, path_name] = uiputfile({'*.png', 'PNG Files (*.png)'; '*.jpg', 'JPEG Files (*.jpg)'}, 'Save Screenshot As');
+% Check if the user canceled the dialog
+if isequal(file_name,0) || isequal(path_name,0)
+% User canceled, do nothing
+return;
+end
+% Combine the path and file name
+full_file_name = fullfile(path_name, file_name);
+
+%Save screenshot
+try
+% Save the screenshot as an image file with the chosen name and format
+imwrite(screenshot.cdata, full_file_name);
+% Provide user feedback
+msgbox(['Screenshot captured and saved as "', full_file_name, '".']);
+
+catch
+errordlg('Error capturing screenshot', 'Capture Error', 'modal');
+end
+
+end
+
+% Image clicked function: Image3_2
+function Image3_2Clicked(app, event)
+% Capture the app's figure
+screenshot1 = getframe(app.BrakeeAppUIFigure);
+
+% Open a dialog to choose the export file location
+[file_name, path_name] = uiputfile({'*.png', 'PNG Files (*.png)'; '*.jpg', 'JPEG Files (*.jpg)'}, 'Save Screenshot As');
+% Check if the user canceled the dialog
+if isequal(file_name,0) || isequal(path_name,0)
+% User canceled, do nothing
+return;
+end
+% Combine the path and file name
+full_file_name = fullfile(path_name, file_name);
+
+%Save screenshot
+try
+% Save the screenshot as an image file with the chosen name and format
+imwrite(screenshot1.cdata, full_file_name);
+% Provide user feedback
+msgbox(['Screenshot captured and saved as "', full_file_name, '".']);
+
+catch
+errordlg('Error capturing screenshot', 'Capture Error', 'modal');
+end
+end
+end
+
+% Component initialization
+methods (Access = private)
+
+% Create UIFigure and components
+function createComponents(app)
+
+% Create BrakeeAppUIFigure and hide until all components are created
+app.BrakeeAppUIFigure = uifigure('Visible', 'off');
+app.BrakeeAppUIFigure.Position = [100 100 1089 725];
+app.BrakeeAppUIFigure.Name = 'Brakee App';
+app.BrakeeAppUIFigure.Icon = 'C:\Users\sb74808\OneDrive - AGCO Corp\Documents\Braking Simulation_App\brakingicon.png';
+
+% Create TabGroup
+app.TabGroup = uitabgroup(app.BrakeeAppUIFigure);
+app.TabGroup.Position = [25 19 1045 694];
+
+% Create STATICTab
+app.STATICTab = uitab(app.TabGroup);
+app.STATICTab.Title = 'STATIC';
+
+% Create RESULTSPanel
+app.RESULTSPanel = uipanel(app.STATICTab);
+app.RESULTSPanel.TitlePosition = 'centertop';
+app.RESULTSPanel.Title = 'RESULTS';
+app.RESULTSPanel.FontWeight = 'bold';
+app.RESULTSPanel.FontSize = 14;
+app.RESULTSPanel.Position = [499 62 524 577];
+
+% Create EmergencyMainBrakeRequirementPanel
+app.EmergencyMainBrakeRequirementPanel = uipanel(app.RESULTSPanel);
+app.EmergencyMainBrakeRequirementPanel.Title = 'Emergency Main Brake Requirement';
+app.EmergencyMainBrakeRequirementPanel.FontWeight = 'bold';
+app.EmergencyMainBrakeRequirementPanel.FontSize = 10;
+app.EmergencyMainBrakeRequirementPanel.Position = [17 358 490 169];
+
+% Create DeccMinRegReqTextAreaLabel
+app.DeccMinRegReqTextAreaLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.DeccMinRegReqTextAreaLabel.HorizontalAlignment = 'right';
+app.DeccMinRegReqTextAreaLabel.FontSize = 10;
+app.DeccMinRegReqTextAreaLabel.FontWeight = 'bold';
+app.DeccMinRegReqTextAreaLabel.Position = [12 104 107 22];
+app.DeccMinRegReqTextAreaLabel.Text = 'Decc. Min. Reg. Req.:';
+
+% Create DeccMinRegReqTextArea
+app.DeccMinRegReqTextArea = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.DeccMinRegReqTextArea.HorizontalAlignment = 'right';
+app.DeccMinRegReqTextArea.FontSize = 10;
+app.DeccMinRegReqTextArea.FontWeight = 'bold';
+app.DeccMinRegReqTextArea.Position = [127 108 140 17];
+
+% Create TextArea
+app.TextArea = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.TextArea.HorizontalAlignment = 'right';
+app.TextArea.FontSize = 10;
+app.TextArea.FontWeight = 'bold';
+app.TextArea.Position = [306 108 140 17];
+
+% Create msLabel
+app.msLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.msLabel.FontSize = 10;
+app.msLabel.FontWeight = 'bold';
+app.msLabel.Position = [269 103 26 22];
+app.msLabel.Text = 'm/s²';
+
+% Create msLabel_2
+app.msLabel_2 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.msLabel_2.FontSize = 10;
+app.msLabel_2.FontWeight = 'bold';
+app.msLabel_2.Position = [447 103 26 22];
+app.msLabel_2.Text = 'm/s²';
+
+% Create DistanceTextAreaLabel
+app.DistanceTextAreaLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.DistanceTextAreaLabel.HorizontalAlignment = 'right';
+app.DistanceTextAreaLabel.FontSize = 10;
+app.DistanceTextAreaLabel.FontWeight = 'bold';
+app.DistanceTextAreaLabel.Position = [66 81 50 22];
+app.DistanceTextAreaLabel.Text = 'Distance:';
+
+% Create DistanceTextArea
+app.DistanceTextArea = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.DistanceTextArea.HorizontalAlignment = 'right';
+app.DistanceTextArea.FontSize = 10;
+app.DistanceTextArea.FontWeight = 'bold';
+app.DistanceTextArea.Position = [127 84 140 18];
+
+% Create mLabel
+app.mLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.mLabel.FontSize = 10;
+app.mLabel.FontWeight = 'bold';
+app.mLabel.Position = [269 82 25 22];
+app.mLabel.Text = 'm';
+
+% Create TextArea_2
+app.TextArea_2 = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.TextArea_2.HorizontalAlignment = 'right';
+app.TextArea_2.FontSize = 10;
+app.TextArea_2.FontWeight = 'bold';
+app.TextArea_2.Position = [305 84 140 18];
+
+% Create mLabel_2
+app.mLabel_2 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.mLabel_2.FontSize = 10;
+app.mLabel_2.FontWeight = 'bold';
+app.mLabel_2.Position = [447 82 25 22];
+app.mLabel_2.Text = 'm';
+
+% Create msLabel_3
+app.msLabel_3 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.msLabel_3.FontSize = 10;
+app.msLabel_3.FontWeight = 'bold';
+app.msLabel_3.Position = [268 29 26 22];
+app.msLabel_3.Text = 'm/s²';
+
+% Create TextArea_3
+app.TextArea_3 = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.TextArea_3.HorizontalAlignment = 'right';
+app.TextArea_3.FontSize = 10;
+app.TextArea_3.FontWeight = 'bold';
+app.TextArea_3.Position = [305 32 140 17];
+
+% Create msLabel_4
+app.msLabel_4 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.msLabel_4.FontSize = 10;
+app.msLabel_4.FontWeight = 'bold';
+app.msLabel_4.Position = [447 30 26 22];
+app.msLabel_4.Text = 'm/s²';
+
+% Create DeccMinRegReqLabel
+app.DeccMinRegReqLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.DeccMinRegReqLabel.HorizontalAlignment = 'right';
+app.DeccMinRegReqLabel.FontSize = 10;
+app.DeccMinRegReqLabel.FontWeight = 'bold';
+app.DeccMinRegReqLabel.Position = [12 30 107 22];
+app.DeccMinRegReqLabel.Text = 'Decc. Min. Reg. Req.:';
+
+% Create DistanceTextArea_2Label
+app.DistanceTextArea_2Label = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.DistanceTextArea_2Label.HorizontalAlignment = 'right';
+app.DistanceTextArea_2Label.FontSize = 10;
+app.DistanceTextArea_2Label.FontWeight = 'bold';
+app.DistanceTextArea_2Label.Position = [66 6 50 22];
+app.DistanceTextArea_2Label.Text = 'Distance:';
+
+% Create DistanceTextArea_2
+app.DistanceTextArea_2 = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.DistanceTextArea_2.HorizontalAlignment = 'right';
+app.DistanceTextArea_2.FontSize = 10;
+app.DistanceTextArea_2.FontWeight = 'bold';
+app.DistanceTextArea_2.Position = [126 9 140 17];
+
+% Create mLabel_3
+app.mLabel_3 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.mLabel_3.FontSize = 10;
+app.mLabel_3.FontWeight = 'bold';
+app.mLabel_3.Position = [269 6 25 22];
+app.mLabel_3.Text = 'm';
+
+% Create TextArea_4
+app.TextArea_4 = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.TextArea_4.HorizontalAlignment = 'right';
+app.TextArea_4.FontSize = 10;
+app.TextArea_4.FontWeight = 'bold';
+app.TextArea_4.Position = [305 9 140 17];
+
+% Create mLabel_4
+app.mLabel_4 = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.mLabel_4.FontSize = 10;
+app.mLabel_4.FontWeight = 'bold';
+app.mLabel_4.Position = [447 6 25 22];
+app.mLabel_4.Text = 'm';
+
+% Create MinRequirementforMotherRegulationLabel
+app.MinRequirementforMotherRegulationLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.MinRequirementforMotherRegulationLabel.FontSize = 11;
+app.MinRequirementforMotherRegulationLabel.FontWeight = 'bold';
+app.MinRequirementforMotherRegulationLabel.Position = [155 125 216 22];
+app.MinRequirementforMotherRegulationLabel.Text = 'Min. Requirement for Mother Regulation';
+
+% Create MinRequirementforUnbraketrailerof3500kgLabel
+app.MinRequirementforUnbraketrailerof3500kgLabel = uilabel(app.EmergencyMainBrakeRequirementPanel);
+app.MinRequirementforUnbraketrailerof3500kgLabel.FontSize = 11;
+app.MinRequirementforUnbraketrailerof3500kgLabel.FontWeight = 'bold';
+app.MinRequirementforUnbraketrailerof3500kgLabel.Position = [136 50 254 22];
+app.MinRequirementforUnbraketrailerof3500kgLabel.Text = 'Min. Requirement for Unbrake trailer of 3500 kg';
+
+% Create DeccMinRegReqTextArea_2
+app.DeccMinRegReqTextArea_2 = uitextarea(app.EmergencyMainBrakeRequirementPanel);
+app.DeccMinRegReqTextArea_2.HorizontalAlignment = 'right';
+app.DeccMinRegReqTextArea_2.FontSize = 10;
+app.DeccMinRegReqTextArea_2.FontWeight = 'bold';
+app.DeccMinRegReqTextArea_2.Position = [126 32 140 17];
+
+% Create LADENLabel
+app.LADENLabel = uilabel(app.RESULTSPanel);
+app.LADENLabel.FontSize = 11;
+app.LADENLabel.FontWeight = 'bold';
+app.LADENLabel.Position = [198 523 43 22];
+app.LADENLabel.Text = 'LADEN';
+
+% Create UNLADENLabel
+app.UNLADENLabel = uilabel(app.RESULTSPanel);
+app.UNLADENLabel.FontSize = 11;
+app.UNLADENLabel.FontWeight = 'bold';
+app.UNLADENLabel.Position = [361 523 59 22];
+app.UNLADENLabel.Text = 'UNLADEN';
+
+% Create EmergencyMainBrakeResultsPanel
+app.EmergencyMainBrakeResultsPanel = uipanel(app.RESULTSPanel);
+app.EmergencyMainBrakeResultsPanel.Title = 'Emergency Main Brake Results';
+app.EmergencyMainBrakeResultsPanel.FontWeight = 'bold';
+app.EmergencyMainBrakeResultsPanel.FontSize = 10;
+app.EmergencyMainBrakeResultsPanel.Position = [17 16 490 317];
+
+% Create DeccMinPmaxTextAreaLabel
+app.DeccMinPmaxTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.DeccMinPmaxTextAreaLabel.HorizontalAlignment = 'right';
+app.DeccMinPmaxTextAreaLabel.FontSize = 10;
+app.DeccMinPmaxTextAreaLabel.FontWeight = 'bold';
+app.DeccMinPmaxTextAreaLabel.Position = [25 216 91 22];
+app.DeccMinPmaxTextAreaLabel.Text = 'Decc. Min (Pmax):';
+
+% Create DeccMinPmaxTextArea
+app.DeccMinPmaxTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.DeccMinPmaxTextArea.HorizontalAlignment = 'right';
+app.DeccMinPmaxTextArea.FontSize = 10;
+app.DeccMinPmaxTextArea.FontWeight = 'bold';
+app.DeccMinPmaxTextArea.Position = [126 219 140 17];
+
+% Create TextArea_5
+app.TextArea_5 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_5.HorizontalAlignment = 'right';
+app.TextArea_5.FontSize = 10;
+app.TextArea_5.FontWeight = 'bold';
+app.TextArea_5.Position = [305 219 140 17];
+
+% Create msLabel_5
+app.msLabel_5 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.msLabel_5.FontSize = 10;
+app.msLabel_5.FontWeight = 'bold';
+app.msLabel_5.Position = [269 216 26 22];
+app.msLabel_5.Text = 'm/s²';
+
+% Create msLabel_6
+app.msLabel_6 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.msLabel_6.FontSize = 10;
+app.msLabel_6.FontWeight = 'bold';
+app.msLabel_6.Position = [447 216 26 22];
+app.msLabel_6.Text = 'm/s²';
+
+% Create BrakingDistancemaxTextAreaLabel
+app.BrakingDistancemaxTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.BrakingDistancemaxTextAreaLabel.HorizontalAlignment = 'right';
+app.BrakingDistancemaxTextAreaLabel.FontSize = 10;
+app.BrakingDistancemaxTextAreaLabel.FontWeight = 'bold';
+app.BrakingDistancemaxTextAreaLabel.Position = [4 192 113 22];
+app.BrakingDistancemaxTextAreaLabel.Text = 'Braking Distance max:';
+
+% Create BrakingDistancemaxTextArea
+app.BrakingDistancemaxTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.BrakingDistancemaxTextArea.HorizontalAlignment = 'right';
+app.BrakingDistancemaxTextArea.FontSize = 10;
+app.BrakingDistancemaxTextArea.FontWeight = 'bold';
+app.BrakingDistancemaxTextArea.Position = [126 195 140 19];
+
+% Create mLabel_5
+app.mLabel_5 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.mLabel_5.FontSize = 10;
+app.mLabel_5.FontWeight = 'bold';
+app.mLabel_5.Position = [271 193 25 22];
+app.mLabel_5.Text = 'm';
+
+% Create TextArea_6
+app.TextArea_6 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_6.HorizontalAlignment = 'right';
+app.TextArea_6.FontSize = 10;
+app.TextArea_6.FontWeight = 'bold';
+app.TextArea_6.Position = [306 195 140 19];
+
+% Create mLabel_6
+app.mLabel_6 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.mLabel_6.FontSize = 10;
+app.mLabel_6.FontWeight = 'bold';
+app.mLabel_6.Position = [447 192 25 22];
+app.mLabel_6.Text = 'm';
+
+% Create DeccMinRegReqTextArea_3
+app.DeccMinRegReqTextArea_3 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.DeccMinRegReqTextArea_3.HorizontalAlignment = 'right';
+app.DeccMinRegReqTextArea_3.FontSize = 10;
+app.DeccMinRegReqTextArea_3.FontWeight = 'bold';
+app.DeccMinRegReqTextArea_3.Position = [126 132 140 20];
+
+% Create msLabel_7
+app.msLabel_7 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.msLabel_7.FontSize = 10;
+app.msLabel_7.FontWeight = 'bold';
+app.msLabel_7.Position = [269 131 26 22];
+app.msLabel_7.Text = 'm/s²';
+
+% Create TextArea_7
+app.TextArea_7 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_7.HorizontalAlignment = 'right';
+app.TextArea_7.FontSize = 10;
+app.TextArea_7.FontWeight = 'bold';
+app.TextArea_7.Position = [305 131 140 22];
+
+% Create msLabel_8
+app.msLabel_8 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.msLabel_8.FontSize = 10;
+app.msLabel_8.FontWeight = 'bold';
+app.msLabel_8.Position = [447 131 26 22];
+app.msLabel_8.Text = 'm/s²';
+
+% Create DeccMaxPmaxLabel
+app.DeccMaxPmaxLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.DeccMaxPmaxLabel.HorizontalAlignment = 'right';
+app.DeccMaxPmaxLabel.FontSize = 10;
+app.DeccMaxPmaxLabel.FontWeight = 'bold';
+app.DeccMaxPmaxLabel.Position = [22 130 93 22];
+app.DeccMaxPmaxLabel.Text = 'Decc. Max (Pmax):';
+
+% Create BrakingDistanceminTextAreaLabel
+app.BrakingDistanceminTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.BrakingDistanceminTextAreaLabel.HorizontalAlignment = 'right';
+app.BrakingDistanceminTextAreaLabel.FontSize = 10;
+app.BrakingDistanceminTextAreaLabel.FontWeight = 'bold';
+app.BrakingDistanceminTextAreaLabel.Position = [3 104 111 22];
+app.BrakingDistanceminTextAreaLabel.Text = 'Braking Distance min:';
+
+% Create BrakingDistanceminTextArea
+app.BrakingDistanceminTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.BrakingDistanceminTextArea.HorizontalAlignment = 'right';
+app.BrakingDistanceminTextArea.FontSize = 10;
+app.BrakingDistanceminTextArea.FontWeight = 'bold';
+app.BrakingDistanceminTextArea.Position = [126 106 140 20];
+
+% Create mLabel_7
+app.mLabel_7 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.mLabel_7.FontSize = 10;
+app.mLabel_7.FontWeight = 'bold';
+app.mLabel_7.Position = [269 104 25 22];
+app.mLabel_7.Text = 'm';
+
+% Create TextArea_8
+app.TextArea_8 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_8.HorizontalAlignment = 'right';
+app.TextArea_8.FontSize = 10;
+app.TextArea_8.FontWeight = 'bold';
+app.TextArea_8.Position = [305 106 140 20];
+
+% Create mLabel_8
+app.mLabel_8 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.mLabel_8.FontSize = 10;
+app.mLabel_8.FontWeight = 'bold';
+app.mLabel_8.Position = [447 106 25 22];
+app.mLabel_8.Text = 'm';
+
+% Create AdherenceGlissementTextAreaLabel
+app.AdherenceGlissementTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.AdherenceGlissementTextAreaLabel.HorizontalAlignment = 'right';
+app.AdherenceGlissementTextAreaLabel.FontSize = 10;
+app.AdherenceGlissementTextAreaLabel.FontWeight = 'bold';
+app.AdherenceGlissementTextAreaLabel.Position = [1 169 113 22];
+app.AdherenceGlissementTextAreaLabel.Text = 'Adherence/Glissement';
+
+% Create AdherenceGlissementTextArea
+app.AdherenceGlissementTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.AdherenceGlissementTextArea.HorizontalAlignment = 'center';
+app.AdherenceGlissementTextArea.FontSize = 10;
+app.AdherenceGlissementTextArea.FontWeight = 'bold';
+app.AdherenceGlissementTextArea.Position = [126 170 140 19];
+
+% Create TextArea_9
+app.TextArea_9 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_9.ValueChangedFcn = createCallbackFcn(app, @TextArea_9ValueChanged, true);
+app.TextArea_9.ValueChangingFcn = createCallbackFcn(app, @TextArea_9ValueChanging, true);
+app.TextArea_9.HorizontalAlignment = 'center';
+app.TextArea_9.FontSize = 10;
+app.TextArea_9.FontWeight = 'bold';
+app.TextArea_9.Position = [305 170 140 19];
+
+% Create AdherenceGlissementTextArea_2Label
+app.AdherenceGlissementTextArea_2Label = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.AdherenceGlissementTextArea_2Label.HorizontalAlignment = 'right';
+app.AdherenceGlissementTextArea_2Label.FontSize = 10;
+app.AdherenceGlissementTextArea_2Label.FontWeight = 'bold';
+app.AdherenceGlissementTextArea_2Label.Position = [1 77 113 22];
+app.AdherenceGlissementTextArea_2Label.Text = 'Adherence/Glissement';
+
+% Create AdherenceGlissementTextArea_2
+app.AdherenceGlissementTextArea_2 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.AdherenceGlissementTextArea_2.ValueChangedFcn = createCallbackFcn(app, @AdherenceGlissementTextArea_2ValueChanged, true);
+app.AdherenceGlissementTextArea_2.HorizontalAlignment = 'center';
+app.AdherenceGlissementTextArea_2.FontSize = 10;
+app.AdherenceGlissementTextArea_2.FontWeight = 'bold';
+app.AdherenceGlissementTextArea_2.Position = [126 81 140 20];
+
+% Create TextArea_10
+app.TextArea_10 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_10.HorizontalAlignment = 'center';
+app.TextArea_10.FontSize = 10;
+app.TextArea_10.FontWeight = 'bold';
+app.TextArea_10.Position = [305 82 140 19];
+
+% Create MRresultforMinTextAreaLabel
+app.MRresultforMinTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.MRresultforMinTextAreaLabel.HorizontalAlignment = 'right';
+app.MRresultforMinTextAreaLabel.FontSize = 10;
+app.MRresultforMinTextAreaLabel.FontWeight = 'bold';
+app.MRresultforMinTextAreaLabel.Position = [27 39 87 22];
+app.MRresultforMinTextAreaLabel.Text = 'MR result for Min';
+
+% Create MRresultforMinTextArea
+app.MRresultforMinTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.MRresultforMinTextArea.HorizontalAlignment = 'center';
+app.MRresultforMinTextArea.FontSize = 10;
+app.MRresultforMinTextArea.FontWeight = 'bold';
+app.MRresultforMinTextArea.Position = [125 43 140 19];
+
+% Create TextArea_11
+app.TextArea_11 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_11.HorizontalAlignment = 'center';
+app.TextArea_11.FontSize = 10;
+app.TextArea_11.FontWeight = 'bold';
+app.TextArea_11.Position = [305 43 140 19];
+
+% Create TargetresultforminTextAreaLabel
+app.TargetresultforminTextAreaLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.TargetresultforminTextAreaLabel.HorizontalAlignment = 'right';
+app.TargetresultforminTextAreaLabel.FontSize = 10;
+app.TargetresultforminTextAreaLabel.FontWeight = 'bold';
+app.TargetresultforminTextAreaLabel.Position = [11 17 102 22];
+app.TargetresultforminTextAreaLabel.Text = 'Target result for min';
+
+% Create TargetresultforminTextArea
+app.TargetresultforminTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TargetresultforminTextArea.HorizontalAlignment = 'center';
+app.TargetresultforminTextArea.FontSize = 10;
+app.TargetresultforminTextArea.FontWeight = 'bold';
+app.TargetresultforminTextArea.Position = [125 19 140 19];
+
+% Create TextArea_12
+app.TextArea_12 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.TextArea_12.HorizontalAlignment = 'center';
+app.TextArea_12.FontSize = 10;
+app.TextArea_12.FontWeight = 'bold';
+app.TextArea_12.Position = [305 19 140 19];
+
+% Create MassLabel
+app.MassLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.MassLabel.HorizontalAlignment = 'right';
+app.MassLabel.FontSize = 11;
+app.MassLabel.FontWeight = 'bold';
+app.MassLabel.Position = [75 259 36 22];
+app.MassLabel.Text = 'Mass:';
+
+% Create MassTextArea
+app.MassTextArea = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.MassTextArea.HorizontalAlignment = 'right';
+app.MassTextArea.FontSize = 11;
+app.MassTextArea.FontWeight = 'bold';
+app.MassTextArea.Position = [125 261 140 18];
+
+% Create MassTextArea_2
+app.MassTextArea_2 = uitextarea(app.EmergencyMainBrakeResultsPanel);
+app.MassTextArea_2.HorizontalAlignment = 'right';
+app.MassTextArea_2.FontSize = 11;
+app.MassTextArea_2.FontWeight = 'bold';
+app.MassTextArea_2.Position = [306 261 140 18];
+
+% Create kgLabel_2
+app.kgLabel_2 = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.kgLabel_2.FontSize = 10;
+app.kgLabel_2.FontWeight = 'bold';
+app.kgLabel_2.Position = [268 259 25 22];
+app.kgLabel_2.Text = 'kg';
+
+% Create kgLabel
+app.kgLabel = uilabel(app.EmergencyMainBrakeResultsPanel);
+app.kgLabel.FontSize = 10;
+app.kgLabel.FontWeight = 'bold';
+app.kgLabel.Position = [448 258 25 22];
+app.kgLabel.Text = 'kg';
+
+% Create LADENLabel_2
+app.LADENLabel_2 = uilabel(app.RESULTSPanel);
+app.LADENLabel_2.FontSize = 11;
+app.LADENLabel_2.FontWeight = 'bold';
+app.LADENLabel_2.Position = [199 330 43 22];
+app.LADENLabel_2.Text = 'LADEN';
+
+% Create UNLADENLabel_2
+app.UNLADENLabel_2 = uilabel(app.RESULTSPanel);
+app.UNLADENLabel_2.FontSize = 11;
+app.UNLADENLabel_2.FontWeight = 'bold';
+app.UNLADENLabel_2.Position = [361 330 59 22];
+app.UNLADENLabel_2.Text = 'UNLADEN';
+
+% Create INPUTPanel
+app.INPUTPanel = uipanel(app.STATICTab);
+app.INPUTPanel.TitlePosition = 'centertop';
+app.INPUTPanel.Title = 'INPUT';
+app.INPUTPanel.FontWeight = 'bold';
+app.INPUTPanel.FontSize = 14;
+app.INPUTPanel.Position = [21 62 466 577];
+
+% Create PedalPanel
+app.PedalPanel = uipanel(app.INPUTPanel);
+app.PedalPanel.Title = 'Pedal';
+app.PedalPanel.FontWeight = 'bold';
+app.PedalPanel.FontSize = 10;
+app.PedalPanel.Position = [19 317 425 121];
+
+% Create MarqueDropDownLabel
+app.MarqueDropDownLabel = uilabel(app.PedalPanel);
+app.MarqueDropDownLabel.HorizontalAlignment = 'right';
+app.MarqueDropDownLabel.FontSize = 10;
+app.MarqueDropDownLabel.FontWeight = 'bold';
+app.MarqueDropDownLabel.Position = [51 78 40 22];
+app.MarqueDropDownLabel.Text = 'Marque';
+
+% Create MarqueDropDown
+app.MarqueDropDown = uidropdown(app.PedalPanel);
+app.MarqueDropDown.Items = {};
+app.MarqueDropDown.FontSize = 10;
+app.MarqueDropDown.FontWeight = 'bold';
+app.MarqueDropDown.Position = [53 60 128 22];
+app.MarqueDropDown.Value = {};
+
+% Create PedalUnitDropDownLabel
+app.PedalUnitDropDownLabel = uilabel(app.PedalPanel);
+app.PedalUnitDropDownLabel.HorizontalAlignment = 'right';
+app.PedalUnitDropDownLabel.FontSize = 10;
+app.PedalUnitDropDownLabel.FontWeight = 'bold';
+app.PedalUnitDropDownLabel.Position = [267 79 54 22];
+app.PedalUnitDropDownLabel.Text = 'Pedal Unit';
+
+% Create PedalUnitDropDown
+app.PedalUnitDropDown = uidropdown(app.PedalPanel);
+app.PedalUnitDropDown.Items = {};
+app.PedalUnitDropDown.FontSize = 10;
+app.PedalUnitDropDown.FontWeight = 'bold';
+app.PedalUnitDropDown.Position = [269 60 100 22];
+app.PedalUnitDropDown.Value = {};
+
+% Create RessortDropDownLabel
+app.RessortDropDownLabel = uilabel(app.PedalPanel);
+app.RessortDropDownLabel.HorizontalAlignment = 'right';
+app.RessortDropDownLabel.FontSize = 10;
+app.RessortDropDownLabel.FontWeight = 'bold';
+app.RessortDropDownLabel.Position = [50 31 43 22];
+app.RessortDropDownLabel.Text = 'Ressort';
+
+% Create RessortDropDown
+app.RessortDropDown = uidropdown(app.PedalPanel);
+app.RessortDropDown.Items = {};
+app.RessortDropDown.FontSize = 10;
+app.RessortDropDown.FontWeight = 'bold';
+app.RessortDropDown.Position = [54 14 128 22];
+app.RessortDropDown.Value = {};
+
+% Create TestEditFieldLabel
+app.TestEditFieldLabel = uilabel(app.PedalPanel);
+app.TestEditFieldLabel.HorizontalAlignment = 'right';
+app.TestEditFieldLabel.FontSize = 10;
+app.TestEditFieldLabel.FontWeight = 'bold';
+app.TestEditFieldLabel.Position = [264 32 25 22];
+app.TestEditFieldLabel.Text = 'Test';
+
+% Create TestEditField
+app.TestEditField = uieditfield(app.PedalPanel, 'numeric');
+app.TestEditField.HorizontalAlignment = 'center';
+app.TestEditField.FontSize = 10;
+app.TestEditField.FontWeight = 'bold';
+app.TestEditField.Position = [269 14 100 22];
+app.TestEditField.Value = 4;
+
+% Create PedalForceEditFieldLabel
+app.PedalForceEditFieldLabel = uilabel(app.INPUTPanel);
+app.PedalForceEditFieldLabel.HorizontalAlignment = 'right';
+app.PedalForceEditFieldLabel.FontSize = 10;
+app.PedalForceEditFieldLabel.FontWeight = 'bold';
+app.PedalForceEditFieldLabel.Position = [154 524 68 22];
+app.PedalForceEditFieldLabel.Text = 'Pedal Force: ';
+
+% Create PedalForceEditField
+app.PedalForceEditField = uieditfield(app.INPUTPanel, 'numeric');
+app.PedalForceEditField.HorizontalAlignment = 'center';
+app.PedalForceEditField.FontSize = 10;
+app.PedalForceEditField.FontWeight = 'bold';
+app.PedalForceEditField.Position = [221 524 64 22];
+app.PedalForceEditField.Value = 60;
+
+% Create daNLabel
+app.daNLabel = uilabel(app.INPUTPanel);
+app.daNLabel.FontSize = 10;
+app.daNLabel.FontWeight = 'bold';
+app.daNLabel.Position = [292 524 25 22];
+app.daNLabel.Text = 'daN';
+
+% Create TracteurPanel
+app.TracteurPanel = uipanel(app.INPUTPanel);
+app.TracteurPanel.Title = 'Tracteur';
+app.TracteurPanel.FontWeight = 'bold';
+app.TracteurPanel.FontSize = 10;
+app.TracteurPanel.Position = [20 450 425 68];
+
+% Create ProjectDropDownLabel
+app.ProjectDropDownLabel = uilabel(app.TracteurPanel);
+app.ProjectDropDownLabel.HorizontalAlignment = 'right';
+app.ProjectDropDownLabel.FontSize = 10;
+app.ProjectDropDownLabel.FontWeight = 'bold';
+app.ProjectDropDownLabel.Position = [48 24 39 22];
+app.ProjectDropDownLabel.Text = 'Project';
+
+% Create ProjectDropDown
+app.ProjectDropDown = uidropdown(app.TracteurPanel);
+app.ProjectDropDown.Items = {};
+app.ProjectDropDown.FontSize = 10;
+app.ProjectDropDown.FontWeight = 'bold';
+app.ProjectDropDown.Position = [54 7 127 22];
+app.ProjectDropDown.Value = {};
+
+% Create ChargementDropDownLabel
+app.ChargementDropDownLabel = uilabel(app.TracteurPanel);
+app.ChargementDropDownLabel.FontSize = 10;
+app.ChargementDropDownLabel.FontWeight = 'bold';
+app.ChargementDropDownLabel.Position = [271 24 63 22];
+app.ChargementDropDownLabel.Text = 'Chargement';
+
+% Create ChargementDropDown
+app.ChargementDropDown = uidropdown(app.TracteurPanel);
+app.ChargementDropDown.Items = {};
+app.ChargementDropDown.FontSize = 10;
+app.ChargementDropDown.FontWeight = 'bold';
+app.ChargementDropDown.Position = [268 6 100 22];
+app.ChargementDropDown.Value = {};
+
+% Create EmetteurPanel
+app.EmetteurPanel = uipanel(app.INPUTPanel);
+app.EmetteurPanel.Title = 'Emetteur';
+app.EmetteurPanel.FontWeight = 'bold';
+app.EmetteurPanel.FontSize = 10;
+app.EmetteurPanel.Position = [19 185 425 118];
+
+% Create TypeDropDownLabel
+app.TypeDropDownLabel = uilabel(app.EmetteurPanel);
+app.TypeDropDownLabel.HorizontalAlignment = 'right';
+app.TypeDropDownLabel.FontSize = 10;
+app.TypeDropDownLabel.FontWeight = 'bold';
+app.TypeDropDownLabel.Position = [16 74 27 22];
+app.TypeDropDownLabel.Text = 'Type';
+
+% Create MCDiaValveRefDropDownLabel
+app.MCDiaValveRefDropDownLabel = uilabel(app.EmetteurPanel);
+app.MCDiaValveRefDropDownLabel.HorizontalAlignment = 'right';
+app.MCDiaValveRefDropDownLabel.FontSize = 10;
+app.MCDiaValveRefDropDownLabel.FontWeight = 'bold';
+app.MCDiaValveRefDropDownLabel.Position = [168 74 86 22];
+app.MCDiaValveRefDropDownLabel.Text = 'MC Dia/Valve Ref';
+
+% Create MCDiaValveRefDropDown
+app.MCDiaValveRefDropDown = uidropdown(app.EmetteurPanel);
+app.MCDiaValveRefDropDown.Items = {};
+app.MCDiaValveRefDropDown.FontSize = 10;
+app.MCDiaValveRefDropDown.FontWeight = 'bold';
+app.MCDiaValveRefDropDown.Position = [173 56 100 22];
+app.MCDiaValveRefDropDown.Value = {};
+
+% Create RatioDropDownLabel
+app.RatioDropDownLabel = uilabel(app.EmetteurPanel);
+app.RatioDropDownLabel.HorizontalAlignment = 'right';
+app.RatioDropDownLabel.FontSize = 10;
+app.RatioDropDownLabel.FontWeight = 'bold';
+app.RatioDropDownLabel.Position = [306 74 30 22];
+app.RatioDropDownLabel.Text = 'Ratio';
+
+% Create RatioDropDown
+app.RatioDropDown = uidropdown(app.EmetteurPanel);
+app.RatioDropDown.Items = {};
+app.RatioDropDown.FontSize = 10;
+app.RatioDropDown.FontWeight = 'bold';
+app.RatioDropDown.Position = [309 56 104 22];
+app.RatioDropDown.Value = {};
+
+% Create FournisseurDropDownLabel
+app.FournisseurDropDownLabel = uilabel(app.EmetteurPanel);
+app.FournisseurDropDownLabel.HorizontalAlignment = 'right';
+app.FournisseurDropDownLabel.FontSize = 10;
+app.FournisseurDropDownLabel.FontWeight = 'bold';
+app.FournisseurDropDownLabel.Position = [12 29 63 22];
+app.FournisseurDropDownLabel.Text = 'Fournisseur';
+
+% Create FournisseurDropDown
+app.FournisseurDropDown = uidropdown(app.EmetteurPanel);
+app.FournisseurDropDown.Items = {};
+app.FournisseurDropDown.FontSize = 10;
+app.FournisseurDropDown.FontWeight = 'bold';
+app.FournisseurDropDown.Position = [16 12 126 22];
+app.FournisseurDropDown.Value = {};
+
+% Create Ressort_EMDropDownLabel
+app.Ressort_EMDropDownLabel = uilabel(app.EmetteurPanel);
+app.Ressort_EMDropDownLabel.HorizontalAlignment = 'right';
+app.Ressort_EMDropDownLabel.FontSize = 10;
+app.Ressort_EMDropDownLabel.FontWeight = 'bold';
+app.Ressort_EMDropDownLabel.Position = [305 29 63 22];
+app.Ressort_EMDropDownLabel.Text = 'Ressort_EM';
+
+% Create Ressort_EMDropDown
+app.Ressort_EMDropDown = uidropdown(app.EmetteurPanel);
+app.Ressort_EMDropDown.Items = {};
+app.Ressort_EMDropDown.FontSize = 10;
+app.Ressort_EMDropDown.FontWeight = 'bold';
+app.Ressort_EMDropDown.Position = [308 12 100 22];
+app.Ressort_EMDropDown.Value = {};
+
+% Create AlimentationDropDownLabel
+app.AlimentationDropDownLabel = uilabel(app.EmetteurPanel);
+app.AlimentationDropDownLabel.HorizontalAlignment = 'right';
+app.AlimentationDropDownLabel.FontSize = 10;
+app.AlimentationDropDownLabel.FontWeight = 'bold';
+app.AlimentationDropDownLabel.Position = [167 30 66 22];
+app.AlimentationDropDownLabel.Text = 'Alimentation';
+
+% Create AlimentationDropDown
+app.AlimentationDropDown = uidropdown(app.EmetteurPanel);
+app.AlimentationDropDown.Items = {};
+app.AlimentationDropDown.FontSize = 10;
+app.AlimentationDropDown.FontWeight = 'bold';
+app.AlimentationDropDown.Position = [175 12 99 22];
+app.AlimentationDropDown.Value = {};
+
+% Create TypeDropDown
+app.TypeDropDown = uidropdown(app.EmetteurPanel);
+app.TypeDropDown.Items = {};
+app.TypeDropDown.DropDownOpeningFcn = createCallbackFcn(app, @TypeDropDownOpening, true);
+app.TypeDropDown.ValueChangedFcn = createCallbackFcn(app, @TypeDropDownValueChanged, true);
+app.TypeDropDown.FontSize = 10;
+app.TypeDropDown.FontWeight = 'bold';
+app.TypeDropDown.Position = [16 56 127 22];
+app.TypeDropDown.Value = {};
+
+% Create TransmissionPanel
+app.TransmissionPanel = uipanel(app.INPUTPanel);
+app.TransmissionPanel.Title = 'Transmission';
+app.TransmissionPanel.FontWeight = 'bold';
+app.TransmissionPanel.FontSize = 10;
+app.TransmissionPanel.Position = [18 53 426 117];
+
+% Create TransmissionDropDownLabel
+app.TransmissionDropDownLabel = uilabel(app.TransmissionPanel);
+app.TransmissionDropDownLabel.HorizontalAlignment = 'right';
+app.TransmissionDropDownLabel.FontSize = 10;
+app.TransmissionDropDownLabel.FontWeight = 'bold';
+app.TransmissionDropDownLabel.Position = [11 73 70 22];
+app.TransmissionDropDownLabel.Text = 'Transmission';
+
+% Create TransmissionDropDown
+app.TransmissionDropDown = uidropdown(app.TransmissionPanel);
+app.TransmissionDropDown.Items = {'NeoB-', 'NeoB+', 'GTA2554', 'CVT', 'DYNA', 'TEST', '2RM', 'ML260 (M221)', 'T750 - 5PS', 'T750 - 10PS', 'T750 - CVT', 'GTA5052', 'ML260 (H219)', 'GTA5A51', 'GTA5054', 'ML180', 'ML260 (H222)', 'ML260 (H222 RC)', 'GTA2A52', 'GTA2A54', 'GTA5052-New_Gain-PROD', 'GTA5052-New_Gain-SAV', 'GTA5A51-New_Gain-SAV', 'ML75-FENDT300', 'GTA2523', 'GTA2A52-New_Gain-SAV', 'ML75', 'GTA2554-New_Gain-SAV', 'GTA2A54-New_Gain-SAV'};
+app.TransmissionDropDown.FontSize = 10;
+app.TransmissionDropDown.FontWeight = 'bold';
+app.TransmissionDropDown.Position = [17 55 133 22];
+app.TransmissionDropDown.Value = 'NeoB-';
+
+% Create VitesseMaxDropDownLabel
+app.VitesseMaxDropDownLabel = uilabel(app.TransmissionPanel);
+app.VitesseMaxDropDownLabel.HorizontalAlignment = 'right';
+app.VitesseMaxDropDownLabel.FontSize = 10;
+app.VitesseMaxDropDownLabel.FontWeight = 'bold';
+app.VitesseMaxDropDownLabel.Position = [173 72 62 22];
+app.VitesseMaxDropDownLabel.Text = 'Vitesse Max';
+
+% Create VitesseMaxDropDown
+app.VitesseMaxDropDown = uidropdown(app.TransmissionPanel);
+app.VitesseMaxDropDown.Items = {'30km/h', '40km/h', '50km/h'};
+app.VitesseMaxDropDown.FontSize = 10;
+app.VitesseMaxDropDown.FontWeight = 'bold';
+app.VitesseMaxDropDown.Position = [176 55 100 22];
+app.VitesseMaxDropDown.Value = '30km/h';
+
+% Create CardanBrakeDropDownLabel
+app.CardanBrakeDropDownLabel = uilabel(app.TransmissionPanel);
+app.CardanBrakeDropDownLabel.HorizontalAlignment = 'right';
+app.CardanBrakeDropDownLabel.FontSize = 10;
+app.CardanBrakeDropDownLabel.FontWeight = 'bold';
+app.CardanBrakeDropDownLabel.Position = [307 72 70 22];
+app.CardanBrakeDropDownLabel.Text = 'Cardan Brake';
+
+% Create CardanBrakeDropDown
+app.CardanBrakeDropDown = uidropdown(app.TransmissionPanel);
+app.CardanBrakeDropDown.Items = {'Oui', 'Non'};
+app.CardanBrakeDropDown.FontSize = 10;
+app.CardanBrakeDropDown.FontWeight = 'bold';
+app.CardanBrakeDropDown.Position = [310 55 103 22];
+app.CardanBrakeDropDown.Value = 'Oui';
+
+% Create VitesseKmhEditFieldLabel
+app.VitesseKmhEditFieldLabel = uilabel(app.TransmissionPanel);
+app.VitesseKmhEditFieldLabel.HorizontalAlignment = 'right';
+app.VitesseKmhEditFieldLabel.FontSize = 10;
+app.VitesseKmhEditFieldLabel.FontWeight = 'bold';
+app.VitesseKmhEditFieldLabel.Position = [12 26 75 22];
+app.VitesseKmhEditFieldLabel.Text = 'Vitesse (Km/h)';
+
+% Create VitesseKmhEditField
+app.VitesseKmhEditField = uieditfield(app.TransmissionPanel, 'numeric');
+app.VitesseKmhEditField.FontSize = 10;
+app.VitesseKmhEditField.FontWeight = 'bold';
+app.VitesseKmhEditField.Position = [19 8 132 22];
+app.VitesseKmhEditField.Value = 30;
+
+% Create PTACEditFieldLabel
+app.PTACEditFieldLabel = uilabel(app.TransmissionPanel);
+app.PTACEditFieldLabel.HorizontalAlignment = 'right';
+app.PTACEditFieldLabel.FontSize = 10;
+app.PTACEditFieldLabel.FontWeight = 'bold';
+app.PTACEditFieldLabel.Position = [309 24 31 22];
+app.PTACEditFieldLabel.Text = 'PTAC';
+
+% Create PTACEditField
+app.PTACEditField = uieditfield(app.TransmissionPanel, 'numeric');
+app.PTACEditField.FontSize = 10;
+app.PTACEditField.FontWeight = 'bold';
+app.PTACEditField.Position = [312 8 100 22];
+app.PTACEditField.Value = 8500;
+
+% Create PTACModelEditFieldLabel
+app.PTACModelEditFieldLabel = uilabel(app.TransmissionPanel);
+app.PTACModelEditFieldLabel.HorizontalAlignment = 'right';
+app.PTACModelEditFieldLabel.FontSize = 10;
+app.PTACModelEditFieldLabel.FontWeight = 'bold';
+app.PTACModelEditFieldLabel.Position = [174 25 63 22];
+app.PTACModelEditFieldLabel.Text = 'PTAC Model';
+
+% Create PTACModelEditField
+app.PTACModelEditField = uieditfield(app.TransmissionPanel, 'text');
+app.PTACModelEditField.FontSize = 10;
+app.PTACModelEditField.FontWeight = 'bold';
+app.PTACModelEditField.Position = [178 8 99 22];
+app.PTACModelEditField.Value = '9,5T';
+
+% Create KgLabel
+app.KgLabel = uilabel(app.TransmissionPanel);
+app.KgLabel.FontSize = 10;
+app.KgLabel.FontWeight = 'bold';
+app.KgLabel.Position = [344 26 25 22];
+app.KgLabel.Text = '(Kg)';
+
+% Create TextArea_17
+app.TextArea_17 = uitextarea(app.INPUTPanel);
+app.TextArea_17.HorizontalAlignment = 'center';
+app.TextArea_17.FontWeight = 'bold';
+app.TextArea_17.FontColor = [0.1176 0.1216 0.1176];
+app.TextArea_17.BackgroundColor = [0.8 0.8 0.8];
+app.TextArea_17.Position = [18 16 426 26];
+
+% Create LOADINPUTDATAButton
+app.LOADINPUTDATAButton = uibutton(app.STATICTab, 'push');
+app.LOADINPUTDATAButton.ButtonPushedFcn = createCallbackFcn(app, @LOADINPUTDATAButtonPushed, true);
+app.LOADINPUTDATAButton.FontWeight = 'bold';
+app.LOADINPUTDATAButton.Position = [196 19 142 28];
+app.LOADINPUTDATAButton.Text = 'LOAD INPUT DATA';
+
+% Create SIMULATEButton
+app.SIMULATEButton = uibutton(app.STATICTab, 'push');
+app.SIMULATEButton.ButtonPushedFcn = createCallbackFcn(app, @SIMULATEButtonPushed, true);
+app.SIMULATEButton.FontWeight = 'bold';
+app.SIMULATEButton.Position = [407 19 168 28];
+app.SIMULATEButton.Text = 'SIMULATE';
+
+% Create CLEARButton
+app.CLEARButton = uibutton(app.STATICTab, 'push');
+app.CLEARButton.ButtonPushedFcn = createCallbackFcn(app, @CLEARButtonPushed, true);
+app.CLEARButton.FontWeight = 'bold';
+app.CLEARButton.Position = [643 19 110 28];
+app.CLEARButton.Text = 'CLEAR';
+
+% Create Image3
+app.Image3 = uiimage(app.STATICTab);
+app.Image3.ImageClickedFcn = createCallbackFcn(app, @Image3Clicked, true);
+app.Image3.Position = [974 13 48 38];
+app.Image3.ImageSource = 'captscreen.png';
+
+% Create DYNAMICTab
+app.DYNAMICTab = uitab(app.TabGroup);
+app.DYNAMICTab.Title = 'DYNAMIC';
+
+% Create UIAxes_2
+app.UIAxes_2 = uiaxes(app.DYNAMICTab);
+title(app.UIAxes_2, 'Pressure (Pe)')
+xlabel(app.UIAxes_2, 'Time (s)')
+ylabel(app.UIAxes_2, 'Pressure (Bars)')
+zlabel(app.UIAxes_2, 'Z')
+app.UIAxes_2.Position = [415 522 245 138];
+
+% Create UIAxes
+app.UIAxes = uiaxes(app.DYNAMICTab);
+title(app.UIAxes, 'Pedal Force')
+xlabel(app.UIAxes, 'Time (s)')
+ylabel(app.UIAxes, 'Force (N)')
+zlabel(app.UIAxes, 'Z')
+app.UIAxes.Position = [69 521 246 134];
+
+% Create UIAxes_15
+app.UIAxes_15 = uiaxes(app.DYNAMICTab);
+title(app.UIAxes_15, 'Braking Force(N)')
+xlabel(app.UIAxes_15, 'Time (s)')
+ylabel(app.UIAxes_15, 'Force (N)')
+zlabel(app.UIAxes_15, 'Z')
+app.UIAxes_15.Position = [762 522 245 138];
+
+% Create LADENPanel
+app.LADENPanel = uipanel(app.DYNAMICTab);
+app.LADENPanel.TitlePosition = 'centertop';
+app.LADENPanel.Title = 'LADEN';
+app.LADENPanel.FontWeight = 'bold';
+app.LADENPanel.Position = [12 40 504 475];
+
+% Create UIAxes_3
+app.UIAxes_3 = uiaxes(app.LADENPanel);
+title(app.UIAxes_3, 'Tractor Speed')
+xlabel(app.UIAxes_3, 'Time (s)')
+ylabel(app.UIAxes_3, 'Speed (km/h)')
+zlabel(app.UIAxes_3, 'Z')
+app.UIAxes_3.Position = [13 308 244 134];
+
+% Create UIAxes_4
+app.UIAxes_4 = uiaxes(app.LADENPanel);
+title(app.UIAxes_4, 'Tractor Acceleration')
+xlabel(app.UIAxes_4, 'Time (s)')
+ylabel(app.UIAxes_4, 'Acceleration (m/s²)')
+zlabel(app.UIAxes_4, 'Z')
+app.UIAxes_4.Position = [14 161 231 138];
+
+% Create UIAxes_6
+app.UIAxes_6 = uiaxes(app.LADENPanel);
+title(app.UIAxes_6, 'Traction')
+xlabel(app.UIAxes_6, 'Time (s)')
+ylabel(app.UIAxes_6, '0-Gliss, 1-Adher')
+zlabel(app.UIAxes_6, 'Z')
+app.UIAxes_6.Position = [13 12 242 134];
+
+% Create UIAxes_7
+app.UIAxes_7 = uiaxes(app.LADENPanel);
+title(app.UIAxes_7, 'MR/Target')
+xlabel(app.UIAxes_7, 'Time (s)')
+ylabel(app.UIAxes_7, '0-Not Resp, 1-Resp')
+zlabel(app.UIAxes_7, 'Z')
+app.UIAxes_7.Position = [257 12 232 134];
+
+% Create UIAxes_5
+app.UIAxes_5 = uiaxes(app.LADENPanel);
+title(app.UIAxes_5, 'Braking distance')
+xlabel(app.UIAxes_5, 'Time (s)')
+ylabel(app.UIAxes_5, 'Distance (m)')
+zlabel(app.UIAxes_5, 'Z')
+app.UIAxes_5.Position = [256 161 232 136];
+
+% Create LADENMASSKGTextAreaLabel
+app.LADENMASSKGTextAreaLabel = uilabel(app.LADENPanel);
+app.LADENMASSKGTextAreaLabel.HorizontalAlignment = 'center';
+app.LADENMASSKGTextAreaLabel.FontWeight = 'bold';
+app.LADENMASSKGTextAreaLabel.Position = [329 371 114 22];
+app.LADENMASSKGTextAreaLabel.Text = 'LADEN MASS (KG)';
+
+% Create TextArea_15
+app.TextArea_15 = uitextarea(app.LADENPanel);
+app.TextArea_15.HorizontalAlignment = 'center';
+app.TextArea_15.FontSize = 14;
+app.TextArea_15.FontWeight = 'bold';
+app.TextArea_15.Position = [296 339 180 29];
+
+% Create blueMinimumredMaximumLabel
+app.blueMinimumredMaximumLabel = uilabel(app.LADENPanel);
+app.blueMinimumredMaximumLabel.HorizontalAlignment = 'center';
+app.blueMinimumredMaximumLabel.Position = [297 405 178 30];
+app.blueMinimumredMaximumLabel.Text = {'blue - Minimum'; 'red - Maximum'};
+
+% Create PLOTRESULTSButton
+app.PLOTRESULTSButton = uibutton(app.DYNAMICTab, 'push');
+app.PLOTRESULTSButton.ButtonPushedFcn = createCallbackFcn(app, @PLOTRESULTSButtonPushed, true);
+app.PLOTRESULTSButton.FontWeight = 'bold';
+app.PLOTRESULTSButton.Position = [293 8 109 23];
+app.PLOTRESULTSButton.Text = 'PLOT RESULTS';
+
+% Create CLEARPLOTSButton
+app.CLEARPLOTSButton = uibutton(app.DYNAMICTab, 'push');
+app.CLEARPLOTSButton.ButtonPushedFcn = createCallbackFcn(app, @CLEARPLOTSButtonPushed, true);
+app.CLEARPLOTSButton.FontWeight = 'bold';
+app.CLEARPLOTSButton.Position = [652 8 142 23];
+app.CLEARPLOTSButton.Text = 'CLEAR PLOTS';
+
+% Create UNLADENPanel
+app.UNLADENPanel = uipanel(app.DYNAMICTab);
+app.UNLADENPanel.TitlePosition = 'centertop';
+app.UNLADENPanel.Title = 'UNLADEN';
+app.UNLADENPanel.FontWeight = 'bold';
+app.UNLADENPanel.Position = [528 40 502 473];
+
+% Create UIAxes_10
+app.UIAxes_10 = uiaxes(app.UNLADENPanel);
+title(app.UIAxes_10, 'Tractor Speed')
+xlabel(app.UIAxes_10, 'Time (s)')
+ylabel(app.UIAxes_10, 'Speed (km/h)')
+zlabel(app.UIAxes_10, 'Z')
+app.UIAxes_10.Position = [11 304 244 134];
+
+% Create UIAxes_11
+app.UIAxes_11 = uiaxes(app.UNLADENPanel);
+title(app.UIAxes_11, 'Tractor Acceleration')
+xlabel(app.UIAxes_11, 'Time (s)')
+ylabel(app.UIAxes_11, 'Acceleration (m/s²)')
+zlabel(app.UIAxes_11, 'Z')
+app.UIAxes_11.Position = [15 157 234 138];
+
+% Create UIAxes_13
+app.UIAxes_13 = uiaxes(app.UNLADENPanel);
+title(app.UIAxes_13, 'Traction')
+xlabel(app.UIAxes_13, 'Time (s)')
+ylabel(app.UIAxes_13, '0-Gliss, 1-Adher')
+zlabel(app.UIAxes_13, 'Z')
+app.UIAxes_13.Position = [14 10 242 134];
+
+% Create UIAxes_14
+app.UIAxes_14 = uiaxes(app.UNLADENPanel);
+title(app.UIAxes_14, 'MR/Target')
+xlabel(app.UIAxes_14, 'Time (s)')
+ylabel(app.UIAxes_14, '0-Not Resp, 1-Resp')
+zlabel(app.UIAxes_14, 'Z')
+app.UIAxes_14.Position = [262 10 235 134];
+
+% Create UIAxes_12
+app.UIAxes_12 = uiaxes(app.UNLADENPanel);
+title(app.UIAxes_12, 'Braking distance')
+xlabel(app.UIAxes_12, 'Time (s)')
+ylabel(app.UIAxes_12, 'Distance (m)')
+zlabel(app.UIAxes_12, 'Z')
+app.UIAxes_12.Position = [263 158 232 136];
+
+% Create UNLADENMASSKGTextAreaLabel
+app.UNLADENMASSKGTextAreaLabel = uilabel(app.UNLADENPanel);
+app.UNLADENMASSKGTextAreaLabel.HorizontalAlignment = 'center';
+app.UNLADENMASSKGTextAreaLabel.FontWeight = 'bold';
+app.UNLADENMASSKGTextAreaLabel.Position = [315 371 131 22];
+app.UNLADENMASSKGTextAreaLabel.Text = 'UNLADEN MASS (KG)';
+
+% Create TextArea_16
+app.TextArea_16 = uitextarea(app.UNLADENPanel);
+app.TextArea_16.HorizontalAlignment = 'center';
+app.TextArea_16.FontSize = 14;
+app.TextArea_16.FontWeight = 'bold';
+app.TextArea_16.Position = [301 339 180 29];
+
+% Create blueMinimumredMaximumLabel_2
+app.blueMinimumredMaximumLabel_2 = uilabel(app.UNLADENPanel);
+app.blueMinimumredMaximumLabel_2.HorizontalAlignment = 'center';
+            app.blueMinimumredMaximumLabel_2.Position = [301 405 178 30];
+            app.blueMinimumredMaximumLabel_2.Text = {'blue - Minimum'; 'red -  Maximum'};
+
+            % Create EXPORTTOEXCELButton
+            app.EXPORTTOEXCELButton = uibutton(app.DYNAMICTab, 'push');
+            app.EXPORTTOEXCELButton.ButtonPushedFcn = createCallbackFcn(app, @EXPORTTOEXCELButtonPushed, true);
+            app.EXPORTTOEXCELButton.FontWeight = 'bold';
+            app.EXPORTTOEXCELButton.Position = [465 8 127 23];
+            app.EXPORTTOEXCELButton.Text = 'EXPORT TO EXCEL';
+
+            % Create Image3_2
+            app.Image3_2 = uiimage(app.DYNAMICTab);
+            app.Image3_2.ImageClickedFcn = createCallbackFcn(app, @Image3_2Clicked, true);
+            app.Image3_2.Position = [989 1 48 38];
+            app.Image3_2.ImageSource = 'captscreen.png';
+
+            % Create UserGuide_StaTab
+            app.UserGuide_StaTab = uitab(app.TabGroup);
+            app.UserGuide_StaTab.Title = 'UserGuide_Sta';
+
+            % Create Image4
+            app.Image4 = uiimage(app.UserGuide_StaTab);
+            app.Image4.Position = [1 78 1043 512];
+            app.Image4.ImageSource = 'GUI_static.PNG';
+
+            % Create UserGuide_DynTab
+            app.UserGuide_DynTab = uitab(app.TabGroup);
+            app.UserGuide_DynTab.Title = 'UserGuide_Dyn';
+
+            % Create Image
+            app.Image = uiimage(app.UserGuide_DynTab);
+            app.Image.Position = [1 107 1044 483];
+            app.Image.ImageSource = 'GUI_dynamic.PNG';
+
+            % Show the figure after all components are created
+            app.BrakeeAppUIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = Brakee
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.BrakeeAppUIFigure)
+
+            % Execute the startup function
+            runStartupFcn(app, @startupFcn)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.BrakeeAppUIFigure)
+        end
+    end
+end
+
